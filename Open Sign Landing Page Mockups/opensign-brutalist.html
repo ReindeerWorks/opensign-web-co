@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenSign — We Build Websites</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Syne:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --white:#FAFAFA;
+  --black:#0C0C0C;
+  --yellow:#F0E000;
+  --yellow-dim:#B8AA00;
+  --gray:#E4E2DC;
+  --mid-gray:#8A8880;
+  --condensed:'Barlow Condensed',sans-serif;
+  --body:'Syne',sans-serif;
+}
+
+html{font-size:16px;scroll-behavior:smooth}
+body{background:var(--white);color:var(--black);font-family:var(--body);-webkit-font-smoothing:antialiased;cursor:crosshair}
+
+a{color:inherit}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--black);color:var(--white);border-bottom:3px solid var(--yellow);display:flex;justify-content:space-between;align-items:stretch}
+.nav-logo{font-family:var(--condensed);font-weight:800;font-size:1.2rem;letter-spacing:0.06em;text-transform:uppercase;padding:0 2rem;display:flex;align-items:center;text-decoration:none;color:var(--white);border-right:2px solid #333}
+.nav-logo span{color:var(--yellow)}
+nav ul{list-style:none;display:flex}
+nav ul li a{font-family:var(--condensed);font-size:0.78rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(250,250,250,0.55);text-decoration:none;padding:0 1.4rem;height:100%;display:flex;align-items:center;border-left:1px solid #222;transition:color 0.15s,background 0.15s}
+nav ul li a:hover{color:var(--yellow);background:#181818}
+.nav-cta-li a{background:var(--yellow) !important;color:var(--black) !important;font-weight:800 !important;border-left:none !important}
+.nav-cta-li a:hover{background:#fff !important}
+
+/* HERO */
+.hero{padding-top:58px;min-height:100vh;display:flex;flex-direction:column;border-bottom:3px solid var(--black)}
+.hero-top{padding:5vh 5% 4vh;display:grid;grid-template-columns:1fr auto;align-items:end;gap:3rem;border-bottom:2px solid var(--black)}
+.hero-hed{font-family:var(--condensed);font-weight:800;font-size:clamp(5rem,14vw,17rem);line-height:0.88;letter-spacing:-0.01em;text-transform:uppercase}
+.hero-hed em{display:block;font-style:normal;color:var(--yellow);-webkit-text-stroke:3px var(--black);text-shadow:4px 4px 0 var(--black)}
+.hero-tag{writing-mode:vertical-rl;font-family:var(--condensed);font-size:0.75rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid-gray);border-left:2px solid var(--gray);padding-left:0.8rem;white-space:nowrap}
+.hero-bottom{padding:3vh 5%;display:grid;grid-template-columns:2fr 1fr;gap:0;flex:1;align-items:stretch}
+.hero-sub-col{display:flex;flex-direction:column;justify-content:space-between;padding-right:3rem;border-right:2px solid var(--black);padding-bottom:4vh}
+.hero-sub{font-size:1.1rem;font-weight:400;line-height:1.7;max-width:480px;margin-top:2rem}
+.hero-sub strong{font-weight:700}
+.hero-actions{display:flex;gap:0;margin-top:3rem}
+.btn-yellow{background:var(--yellow);color:var(--black);font-family:var(--condensed);font-weight:800;font-size:0.9rem;letter-spacing:0.12em;text-transform:uppercase;padding:1rem 2.2rem;text-decoration:none;display:inline-block;border:3px solid var(--black);box-shadow:4px 4px 0 var(--black);transition:transform 0.1s,box-shadow 0.1s}
+.btn-yellow:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--black)}
+.btn-outline{background:transparent;color:var(--black);font-family:var(--condensed);font-weight:700;font-size:0.9rem;letter-spacing:0.12em;text-transform:uppercase;padding:1rem 2rem;text-decoration:none;display:inline-block;border:3px solid var(--black);border-left:none;transition:background 0.15s}
+.btn-outline:hover{background:var(--gray)}
+.hero-stat-col{padding:3rem 3rem 4vh;display:flex;flex-direction:column;justify-content:flex-end;gap:2.5rem}
+.stat-item{}
+.stat-n{font-family:var(--condensed);font-weight:800;font-size:4.5rem;line-height:1;letter-spacing:-0.02em}
+.stat-n span{font-size:2rem}
+.stat-lbl{font-size:0.78rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--mid-gray);margin-top:0.2rem}
+
+/* SECTION BASE */
+section{border-top:3px solid var(--black)}
+.s-inner{padding:5rem 5%}
+.s-label{font-family:var(--condensed);font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;background:var(--yellow);color:var(--black);display:inline-block;padding:0.2rem 0.6rem;margin-bottom:1.5rem}
+.s-hed{font-family:var(--condensed);font-weight:800;font-size:clamp(3rem,6vw,7rem);line-height:0.9;text-transform:uppercase;letter-spacing:-0.01em}
+
+/* HOW */
+.how-body{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:3.5rem}
+.how-copy{padding-right:4rem;border-right:2px solid var(--black);font-size:0.95rem;line-height:1.8;color:#3A3835}
+.how-copy p+p{margin-top:1rem}
+.how-steps-col{padding-left:3.5rem}
+.how-step{padding:1.8rem 0;border-bottom:1.5px solid var(--gray);display:flex;gap:1.5rem;align-items:baseline}
+.how-step:first-child{border-top:1.5px solid var(--gray)}
+.hn{font-family:var(--condensed);font-weight:800;font-size:3.5rem;line-height:1;color:var(--gray)}
+.hstep-text h3{font-family:var(--condensed);font-weight:700;font-size:1.4rem;letter-spacing:0.02em;text-transform:uppercase;margin-bottom:0.25rem}
+.hstep-text p{font-size:0.84rem;line-height:1.65;color:#555450}
+
+/* DIFFERENCE BAND */
+.diff{background:var(--black);color:var(--white)}
+.diff-inner{padding:5rem 5%;display:grid;grid-template-columns:1fr 1fr;gap:0}
+.diff-left{padding-right:4rem;border-right:2px solid #2A2A2A}
+.diff-hed{font-family:var(--condensed);font-weight:800;font-size:clamp(3rem,6vw,7rem);line-height:0.88;text-transform:uppercase;letter-spacing:-0.01em}
+.diff-hed em{display:block;font-style:normal;color:var(--yellow)}
+.diff-right{padding-left:4rem;display:flex;flex-direction:column;justify-content:center;gap:2rem}
+.diff-item{padding-bottom:2rem;border-bottom:1px solid #2A2A2A}
+.diff-item:last-child{border-bottom:none}
+.diff-item h3{font-family:var(--condensed);font-weight:700;font-size:1.2rem;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:0.3rem;color:var(--yellow)}
+.diff-item p{font-size:0.85rem;line-height:1.7;color:rgba(250,250,250,0.55)}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:3.5rem;border:3px solid var(--black)}
+.pc{padding:2.5rem;border-right:2px solid var(--black)}
+.pc:last-child{border-right:none}
+.pc.featured{background:var(--black);color:var(--white)}
+.pc-tier{font-family:var(--condensed);font-weight:800;font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;display:flex;align-items:center;gap:0.5rem;margin-bottom:1.5rem}
+.pc.featured .pc-tier{color:var(--yellow)}
+.pc-badge{background:var(--yellow);color:var(--black);font-family:var(--condensed);font-size:0.62rem;font-weight:800;letter-spacing:0.1em;padding:0.15rem 0.5rem;text-transform:uppercase}
+.pc-price{font-family:var(--condensed);font-weight:800;font-size:3.5rem;line-height:1;letter-spacing:-0.02em}
+.pc-price-lbl{font-size:0.72rem;color:var(--mid-gray);margin-top:0.2rem;font-family:var(--condensed);letter-spacing:0.1em;text-transform:uppercase}
+.pc.featured .pc-price-lbl{color:rgba(250,250,250,0.4)}
+.pc-divider{margin:1.5rem 0;border:none;border-top:1.5px solid var(--gray)}
+.pc.featured .pc-divider{border-color:#2A2A2A}
+.pc-mo{font-family:var(--condensed);font-weight:800;font-size:2rem;line-height:1}
+.pc-mo sup{font-size:1rem}
+.pc-mo-lbl{font-size:0.7rem;color:var(--mid-gray);font-family:var(--condensed);letter-spacing:0.1em;text-transform:uppercase}
+.pc.featured .pc-mo-lbl{color:rgba(250,250,250,0.4)}
+.pc-features{margin-top:1.5rem;list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+.pc-features li{font-size:0.82rem;line-height:1.5;color:#4A4845;display:flex;gap:0.5rem;align-items:baseline}
+.pc.featured .pc-features li{color:rgba(250,250,250,0.6)}
+.pc-features li::before{content:"→";font-family:var(--condensed);font-weight:700;color:var(--yellow);flex-shrink:0}
+.pc.featured .pc-features li::before{color:var(--yellow)}
+
+/* PROMISE */
+.promise-inner{padding:5rem 5%}
+.promise-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:2px solid var(--black);margin-top:3rem}
+.pg-item{padding:2.5rem;border-bottom:2px solid var(--black);border-right:2px solid var(--black)}
+.pg-item:nth-child(2n){border-right:none}
+.pg-item:nth-last-child(-n+2){border-bottom:none}
+.pg-num{font-family:var(--condensed);font-weight:800;font-size:5rem;line-height:1;color:var(--gray);margin-bottom:0.5rem}
+.pg-item h3{font-family:var(--condensed);font-weight:700;font-size:1.35rem;letter-spacing:0.03em;text-transform:uppercase;margin-bottom:0.5rem}
+.pg-item p{font-size:0.84rem;line-height:1.7;color:#5A5856}
+
+/* CTA BAND */
+.ctaband{background:var(--yellow);border-top:3px solid var(--black);border-bottom:3px solid var(--black)}
+.ctaband-inner{padding:4rem 5%;display:flex;justify-content:space-between;align-items:center;gap:3rem}
+.cta-hed{font-family:var(--condensed);font-weight:800;font-size:clamp(2.5rem,5vw,6rem);text-transform:uppercase;line-height:0.9;letter-spacing:-0.01em}
+.ctaband .btn-ink{background:var(--black);color:var(--white);font-family:var(--condensed);font-weight:800;font-size:0.9rem;letter-spacing:0.12em;text-transform:uppercase;padding:1.2rem 2.8rem;text-decoration:none;border:3px solid var(--black);box-shadow:5px 5px 0 var(--black-shadow,rgba(0,0,0,0.3));flex-shrink:0;transition:transform 0.1s,box-shadow 0.1s}
+.ctaband .btn-ink:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 rgba(0,0,0,0.3)}
+
+/* FOOTER */
+footer{background:var(--black);color:var(--white);padding:2.5rem 5%;display:flex;justify-content:space-between;align-items:center}
+.footer-logo{font-family:var(--condensed);font-weight:800;font-size:1.3rem;letter-spacing:0.06em;text-transform:uppercase}
+.footer-logo span{color:var(--yellow)}
+footer p{font-size:0.75rem;color:rgba(250,250,250,0.4);font-family:var(--condensed);letter-spacing:0.08em}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-family:var(--condensed);font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(250,250,250,0.4);text-decoration:none;transition:color 0.15s}
+.footer-links a:hover{color:var(--yellow)}
+
+/* FI */
+.fi{opacity:0;transform:translateY(16px);transition:opacity 0.65s ease,transform 0.65s ease}
+.fi.in{opacity:1;transform:translateY(0)}
+.fi-d1{transition-delay:0.12s}
+.fi-d2{transition-delay:0.22s}
+
+/* MOBILE */
+@media(max-width:800px){
+  nav ul{display:none}
+  .hero-bottom{grid-template-columns:1fr}
+  .hero-sub-col{border-right:none;padding-right:0}
+  .hero-stat-col{flex-direction:row;flex-wrap:wrap;gap:2rem;padding-left:0;border-top:2px solid var(--black);margin-top:2rem;padding-top:2rem}
+  .how-body,.diff-inner,.ctaband-inner{grid-template-columns:1fr}
+  .how-copy{border-right:none;padding-right:0;border-bottom:2px solid var(--black);padding-bottom:2rem}
+  .how-steps-col{padding-left:0;padding-top:2rem}
+  .diff-left{border-right:none;padding-right:0;border-bottom:2px solid #2A2A2A;padding-bottom:3rem}
+  .diff-right{padding-left:0;padding-top:3rem}
+  .pricing-grid{grid-template-columns:1fr}
+  .pc{border-right:none;border-bottom:2px solid var(--black)}
+  .pc:last-child{border-bottom:none}
+  .promise-grid{grid-template-columns:1fr}
+  .pg-item{border-right:none}
+  .pg-item:nth-last-child(-n+2){border-bottom:2px solid var(--black)}
+  .pg-item:last-child{border-bottom:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Open<span>Sign</span></a>
+  <ul>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#promise">Our promise</a></li>
+    <li class="nav-cta-li"><a href="#contact">Get a mockup →</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-top">
+    <h1 class="hero-hed">We<br>Build<br><em>Websites.</em></h1>
+    <span class="hero-tag">OpenSign Web Co — est. 2025</span>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-sub-col">
+      <div>
+        <p class="hero-sub">Small businesses deserve websites that work. We design, build, and host them — fast, affordably, and without locking you in. <strong>We'll show you three finished mockups before you spend a dollar.</strong></p>
+        <div class="hero-actions">
+          <a href="#how" class="btn-yellow">See how it works</a>
+          <a href="#pricing" class="btn-outline">View pricing</a>
+        </div>
+      </div>
+      <p style="font-size:0.78rem;color:var(--mid-gray);font-family:'Barlow Condensed',sans-serif;letter-spacing:0.1em;text-transform:uppercase">Nick &amp; Richard — two brothers, one studio, no agencies</p>
+    </div>
+    <div class="hero-stat-col">
+      <div class="stat-item">
+        <p class="stat-n">3<span>×</span></p>
+        <p class="stat-lbl">Mockups sent free<br>before you decide</p>
+      </div>
+      <div class="stat-item">
+        <p class="stat-n">&lt;1<span>wk</span></p>
+        <p class="stat-lbl">From "yes" to<br>live website</p>
+      </div>
+      <div class="stat-item">
+        <p class="stat-n">$0</p>
+        <p class="stat-lbl">Exit fee if<br>you ever leave</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="s-inner">
+    <span class="s-label fi">The process</span>
+    <h2 class="s-hed fi fi-d1">How<br>It<br>Works.</h2>
+    <div class="how-body fi fi-d2">
+      <div class="how-copy">
+        <p>Most agencies ask you to trust them before showing a single design. We do the opposite.</p>
+        <p>We research your business, build 2–3 complete, clickable mockup websites, and send them to you — no charge, no obligation. Three distinct directions, not three flavors of the same template.</p>
+        <p>If one clicks, you reply. We finish it, fill in real content, source the right imagery, and have you live within a week. Then we keep it running for a flat monthly fee with no surprises.</p>
+        <p>We're not an agency. No 20-page proposals, no 6-month timelines. Just fast, honest work for the kind of businesses that keep neighborhoods running.</p>
+      </div>
+      <div class="how-steps-col">
+        <div class="how-step">
+          <span class="hn">01</span>
+          <div class="hstep-text">
+            <h3>We find you.</h3>
+            <p>We research businesses with dated or missing websites. If yours makes the list, we think it could be better.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <span class="hn">02</span>
+          <div class="hstep-text">
+            <h3>3 mockups. Free.</h3>
+            <p>Real, clickable sites — not screenshots — designed specifically for your business. Three different creative directions.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <span class="hn">03</span>
+          <div class="hstep-text">
+            <h3>Pick your favorite.</h3>
+            <p>We fill in real content, license the right imagery, and polish everything. Live within a week of your reply.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <span class="hn">04</span>
+          <div class="hstep-text">
+            <h3>We keep it running.</h3>
+            <p>Flat monthly fee covers hosting, SSL, updates, and support. Email us a change; it gets done the same day.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="diff">
+  <div class="diff-inner">
+    <div class="diff-left fi">
+      <p style="font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:1.5rem">Why us</p>
+      <h2 class="diff-hed">Not<br>Your<br><em>Agency.</em></h2>
+    </div>
+    <div class="diff-right fi fi-d1">
+      <div class="diff-item">
+        <h3>No lock-in.</h3>
+        <p>If you ever leave, we export your full site and hand it over — domain too. No fees. No friction. Your site is yours.</p>
+      </div>
+      <div class="diff-item">
+        <h3>Published pricing.</h3>
+        <p>Every number is on this page. Anything outside the scope gets quoted in writing before we touch it. The agency industry runs on hidden monthly creep. We don't.</p>
+      </div>
+      <div class="diff-item">
+        <h3>Static &amp; fast.</h3>
+        <p>No WordPress, no plugin bloat. Static sites on Cloudflare's global CDN — secure, fast everywhere, and impossible to hack.</p>
+      </div>
+      <div class="diff-item">
+        <h3>Same-day changes.</h3>
+        <p>We don't disappear for two weeks to update a phone number. Small changes happen the same day.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="pricing">
+  <div class="s-inner">
+    <span class="s-label fi">Pricing</span>
+    <h2 class="s-hed fi fi-d1">Honest<br>Numbers.</h2>
+    <div class="pricing-grid fi fi-d2">
+      <div class="pc">
+        <p class="pc-tier">Starter</p>
+        <p class="pc-price">$300</p>
+        <p class="pc-price-lbl">one-time build fee</p>
+        <hr class="pc-divider">
+        <p class="pc-mo">$25<sup>/mo</sup></p>
+        <p class="pc-mo-lbl">ongoing</p>
+        <ul class="pc-features">
+          <li>Hosting, SSL, global CDN</li>
+          <li>Daily backups</li>
+          <li>2 changes/month included</li>
+          <li>Uptime monitoring</li>
+          <li>Email support</li>
+        </ul>
+      </div>
+      <div class="pc featured">
+        <p class="pc-tier"><span>Standard</span><span class="pc-badge">Most popular</span></p>
+        <p class="pc-price">$500</p>
+        <p class="pc-price-lbl">one-time build fee</p>
+        <hr class="pc-divider">
+        <p class="pc-mo">$50<sup>/mo</sup></p>
+        <p class="pc-mo-lbl">ongoing</p>
+        <ul class="pc-features">
+          <li>Everything in Starter</li>
+          <li>Google Business management</li>
+          <li>Quarterly content refresh</li>
+          <li>Faster change turnaround</li>
+        </ul>
+      </div>
+      <div class="pc">
+        <p class="pc-tier">Pro</p>
+        <p class="pc-price">$1,000</p>
+        <p class="pc-price-lbl">one-time build fee</p>
+        <hr class="pc-divider">
+        <p class="pc-mo">$100<sup>/mo</sup></p>
+        <p class="pc-mo-lbl">ongoing</p>
+        <ul class="pc-features">
+          <li>Everything in Standard</li>
+          <li>Booking &amp; form integrations</li>
+          <li>Monthly performance review</li>
+          <li>Same-day priority changes</li>
+          <li>Minor design tweaks included</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="promise">
+  <div class="promise-inner">
+    <span class="s-label fi">Our commitments</span>
+    <h2 class="s-hed fi fi-d1">Four<br>Promises.</h2>
+    <div class="promise-grid fi fi-d2">
+      <div class="pg-item">
+        <p class="pg-num">01</p>
+        <h3>No lock-in, ever.</h3>
+        <p>If you leave, we export your full site and help you migrate. Domain stays in your name from day one. No exit fees. No friction.</p>
+      </div>
+      <div class="pg-item">
+        <p class="pg-num">02</p>
+        <h3>Published pricing.</h3>
+        <p>Everything on this page is what you pay. Extras get quoted in writing first. The industry's biggest sin is hidden monthly creep. Not here.</p>
+      </div>
+      <div class="pg-item">
+        <p class="pg-num">03</p>
+        <h3>Fast, predictable updates.</h3>
+        <p>Small changes same day. No two-week wait to update your hours. We're reachable by email — real humans, real replies.</p>
+      </div>
+      <div class="pg-item">
+        <p class="pg-num">04</p>
+        <h3>Made for your business.</h3>
+        <p>Every site starts from a brief specific to you. Your neighborhood, your tone, your details — not stock copy that could be anyone's.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ctaband">
+  <div class="ctaband-inner">
+    <h2 class="cta-hed">See what<br>yours could<br>look like.</h2>
+    <a href="#contact" class="btn-ink">Get your free mockups →</a>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <p class="footer-logo">Open<span>Sign</span></p>
+    <p style="margin-top:0.4rem">&copy; 2025 — Websites built to last.</p>
+  </div>
+  <div class="footer-links">
+    <a href="#how">How it works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#promise">Our promise</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in') });
+}, { threshold: 0.06 });
+document.querySelectorAll('.fi').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
