@@ -2,6 +2,162 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Clinical Precision — Open Sign Web Co">
-  <h1>Clinical Precision</h1>
+<BaseLayout
+  title="Clinical Precision — Open Sign Web Co"
+  description="Real websites for small businesses, at a price small businesses can afford. $25/mo, no lock-in."
+>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .font-sora { font-family: 'Sora', sans-serif; }
+      .font-atkinson { font-family: 'Atkinson Hyperlegible', sans-serif; }
+    </style>
+  </Fragment>
+
+  <div class="font-atkinson text-[#0F172A]">
+
+    <!-- Header -->
+    <header class="border-b border-[#E2E8F0]">
+      <div class="max-w-[1200px] mx-auto px-6 py-5">
+        <span class="font-sora font-700 text-[#0F172A] text-lg tracking-tight">Open Sign Web Co</span>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="max-w-[1200px] mx-auto px-6 py-20 md:py-32">
+      <div class="max-w-[720px]">
+        <h1 class="font-sora font-bold text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-[#0F172A] mb-6">
+          Real websites for small businesses, at a price small businesses can afford.
+        </h1>
+        <p class="text-lg md:text-xl leading-[1.65] text-[#475569]">
+          Built by us, hosted by us, changed by emailing us. $25/mo monthly, or $19/mo if you pay
+          yearly. Your website and domain are yours from day one.
+        </p>
+      </div>
+    </section>
+
+    <hr class="border-t border-[#E2E8F0] max-w-[1200px] mx-auto" />
+
+    <!-- Pricing -->
+    <section class="max-w-[1200px] mx-auto px-6 py-20 md:py-32">
+      <h2 class="font-sora font-semibold text-2xl md:text-3xl text-[#0F172A] leading-[1.1] mb-10">
+        Pricing, in plain English
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Monthly card -->
+        <div class="border-[1.5px] border-[#E2E8F0] rounded-lg p-8 hover:border-[#94A3B8]">
+          <p class="font-sora font-bold text-3xl text-[#1E3A8A] mb-3">$25<span class="text-lg font-semibold text-[#475569]">/month</span></p>
+          <p class="text-[#0F172A] font-bold mb-2">Monthly billing</p>
+          <p class="text-[#475569] leading-[1.65]">Cancel anytime. No build fee.</p>
+        </div>
+        <!-- Annual card -->
+        <div class="border-[1.5px] border-[#E2E8F0] rounded-lg p-8 hover:border-[#94A3B8]">
+          <p class="font-sora font-bold text-3xl text-[#1E3A8A] mb-3">$19<span class="text-lg font-semibold text-[#475569]">/month</span></p>
+          <p class="text-[#0F172A] font-bold mb-2">Billed annually ($228/year)</p>
+          <p class="text-[#475569] leading-[1.65]">No build fee. The annual prepayment is non-refundable, but your website and domain are always yours.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="border-t border-[#E2E8F0] max-w-[1200px] mx-auto" />
+
+    <!-- What's included -->
+    <section class="max-w-[1200px] mx-auto px-6 py-20 md:py-32">
+      <h2 class="font-sora font-semibold text-2xl md:text-3xl text-[#0F172A] leading-[1.1] mb-10">
+        What's included
+      </h2>
+      <div class="max-w-[680px] divide-y divide-[#E2E8F0]">
+        <p class="py-5 text-[#0F172A] leading-[1.65]">A website designed for your business, not adapted from a template</p>
+        <p class="py-5 text-[#0F172A] leading-[1.65]">Hosting, SSL, daily backups, uptime monitoring</p>
+        <p class="py-5 text-[#0F172A] leading-[1.65]">Changes by email — small things just get done; bigger things we'll tell you the cost of before doing anything. No allowances to count, no surprises.</p>
+      </div>
+    </section>
+
+    <hr class="border-t border-[#E2E8F0] max-w-[1200px] mx-auto" />
+
+    <!-- What costs extra -->
+    <section class="max-w-[1200px] mx-auto px-6 py-20 md:py-32">
+      <h2 class="font-sora font-semibold text-2xl md:text-3xl text-[#0F172A] leading-[1.1] mb-5">
+        What costs extra (and what it costs)
+      </h2>
+      <p class="text-[#475569] leading-[1.65] max-w-[680px] mb-10">
+        We publish this because the worst part of working with an agency is the surprise on the invoice. There won't be one.
+      </p>
+      <div class="max-w-[680px] divide-y divide-[#E2E8F0]">
+        <div class="py-5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1">
+          <span class="text-[#0F172A] leading-[1.65]">A new page on your site</span>
+          <span class="text-[#1E3A8A] font-bold whitespace-nowrap">$50, flat</span>
+        </div>
+        <div class="py-5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1">
+          <span class="text-[#0F172A] leading-[1.65]">A major redesign</span>
+          <span class="text-[#475569] whitespace-nowrap">quoted per project, in writing, before any work</span>
+        </div>
+        <div class="py-5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1">
+          <span class="text-[#0F172A] leading-[1.65]">Integrations (booking, e-commerce, custom forms)</span>
+          <span class="text-[#475569] whitespace-nowrap">quoted per project</span>
+        </div>
+        <div class="py-5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1">
+          <span class="text-[#0F172A] leading-[1.65]">Domain registration</span>
+          <span class="text-[#475569] whitespace-nowrap">at our cost, no markup</span>
+        </div>
+        <div class="py-5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1">
+          <span class="text-[#0F172A] leading-[1.65]">Anything else</span>
+          <span class="text-[#475569] whitespace-nowrap">quoted in writing first, every time</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lock-in callout -->
+    <section class="bg-[#F8FAFC] border-t border-b border-[#E2E8F0]">
+      <div class="max-w-[1200px] mx-auto px-6 py-24 md:py-32">
+        <div class="max-w-[680px]">
+          <h2 class="font-sora font-semibold text-2xl md:text-3xl text-[#0F172A] leading-[1.1] mb-6">
+            Your website, your domain, always
+          </h2>
+          <p class="text-[#475569] leading-[1.65] text-lg">
+            If you leave us, we hand both over. The site files, the domain — yours to take wherever
+            you want, no fee, no fuss. Most agencies treat the inability to leave as a feature. We
+            think that's backwards.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who we are -->
+    <section class="max-w-[1200px] mx-auto px-6 py-20 md:py-32">
+      <h2 class="font-sora font-semibold text-2xl md:text-3xl text-[#0F172A] leading-[1.1] mb-6">
+        Who we are
+      </h2>
+      <p class="text-[#475569] leading-[1.65] max-w-[680px] text-lg">
+        Open Sign Web Co is Nick and Richard, two brothers who've been small business owners and got
+        tired of watching other small business owners get priced out of having a real website. We
+        started this to fix that.
+      </p>
+    </section>
+
+    <hr class="border-t border-[#E2E8F0] max-w-[1200px] mx-auto" />
+
+    <!-- CTA -->
+    <section class="max-w-[1200px] mx-auto px-6 py-20 md:py-32">
+      <h2 class="font-sora font-semibold text-2xl md:text-3xl text-[#0F172A] leading-[1.1] mb-5">
+        Want to see what yours could look like?
+      </h2>
+      <p class="text-[#475569] leading-[1.65] max-w-[600px] mb-8 text-lg">
+        Email us at <a href="mailto:hello@opensignwebco.com" class="text-[#3B82F6] hover:text-[#1E3A8A] underline underline-offset-2">hello@opensignwebco.com</a> with your business name and what you do. We'll send you two quick mockups of what your site could look like, free, no commitment.
+      </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-[#E2E8F0]">
+      <div class="max-w-[1200px] mx-auto px-6 py-8">
+        <p class="text-sm text-[#475569]">Open Sign Web Co · hello@opensignwebco.com · 2026</p>
+      </div>
+    </footer>
+
+  </div>
 </BaseLayout>

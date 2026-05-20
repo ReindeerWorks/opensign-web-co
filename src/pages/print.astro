@@ -2,6 +2,310 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Print-Inspired — Open Sign Web Co">
-  <h1>Print-Inspired</h1>
+<BaseLayout
+  title="Print-Inspired — Open Sign Web Co"
+  description="Real websites for small businesses, at a price small businesses can afford. $25/mo, no lock-in."
+>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body { background-color: #FDFAF6; }
+
+      .font-fraunces { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; }
+      .font-source   { font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; }
+
+      /* Drop cap on the "Who we are" paragraph */
+      .drop-cap::first-letter {
+        font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+        font-size: 5em;
+        font-weight: 700;
+        color: #991B1B;
+        float: left;
+        line-height: 0.72;
+        margin-right: 0.08em;
+        padding-top: 0.07em;
+      }
+
+      /* Two-column magazine text on desktop */
+      .two-col {
+        column-gap: 2.5rem;
+        column-fill: balance;
+      }
+      @media (min-width: 768px) {
+        .two-col { column-count: 2; }
+      }
+
+      /* Section number label */
+      .section-num {
+        font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+        color: #991B1B;
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+    </style>
+  </Fragment>
+
+  <div class="font-source text-[#1A1A1A] bg-[#FDFAF6] min-h-screen">
+
+    <!-- Masthead -->
+    <header class="max-w-[1000px] mx-auto px-6 pt-10 pb-5">
+      <p class="font-fraunces text-[#1A1A1A] tracking-tight mb-5"
+        style="font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 600;">
+        Open Sign Web Co
+      </p>
+      <hr class="border-t-2 border-[#991B1B]" />
+    </header>
+
+    <!-- Hero -->
+    <section class="max-w-[1000px] mx-auto px-6 pt-10 pb-12">
+      <h1
+        class="font-fraunces text-[#1A1A1A] mb-6 leading-[1.15]"
+        style="font-size: clamp(2.25rem, 5.5vw, 4.25rem); font-weight: 550;"
+      >
+        Real websites for small businesses,<br />
+        at a price small businesses can afford.
+      </h1>
+      <p
+        class="font-fraunces italic text-[#4A4A4A] leading-[1.7] max-w-[680px]"
+        style="font-size: clamp(1rem, 2vw, 1.25rem);"
+      >
+        Built by us, hosted by us, changed by emailing us. $25/mo monthly, or $19/mo if you pay
+        yearly. Your website and domain are yours from day one.
+      </p>
+      <hr class="border-t border-[#991B1B] mt-10" />
+    </section>
+
+    <!-- I. Pricing -->
+    <section class="max-w-[1000px] mx-auto px-6 py-10">
+      <p class="section-num mb-2">I.</p>
+      <h2
+        class="font-fraunces text-[#1A1A1A] leading-[1.2] mb-3 pb-2 border-b border-[#991B1B]"
+        style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600;"
+      >
+        Pricing, in plain English
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 mt-8 divide-y md:divide-y-0 md:divide-x divide-[#1A1A1A]/25">
+        <div class="pr-0 pb-6 md:pb-0 md:pr-10">
+          <p class="font-fraunces text-[#1A1A1A] mb-1" style="font-size: 1.625rem; font-weight: 700;">
+            $25/month
+          </p>
+          <p class="font-source text-[#991B1B] uppercase tracking-widest text-xs mb-3">
+            Monthly billing
+          </p>
+          <p class="font-source text-[#4A4A4A] leading-[1.7]">
+            Cancel anytime. No build fee.
+          </p>
+        </div>
+        <div class="pt-6 md:pt-0 md:pl-10">
+          <p class="font-fraunces text-[#1A1A1A] mb-1" style="font-size: 1.625rem; font-weight: 700;">
+            $19/month
+          </p>
+          <p class="font-source text-[#991B1B] uppercase tracking-widest text-xs mb-3">
+            Billed annually ($228/year)
+          </p>
+          <p class="font-source text-[#4A4A4A] leading-[1.7]">
+            No build fee. The annual prepayment is non-refundable, but your website and domain are
+            always yours.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="max-w-[1000px] mx-auto border-t border-[#1A1A1A]/15" />
+
+    <!-- II. What's included -->
+    <section class="max-w-[1000px] mx-auto px-6 py-10">
+      <p class="section-num mb-2">II.</p>
+      <h2
+        class="font-fraunces text-[#1A1A1A] leading-[1.2] mb-3 pb-2 border-b border-[#991B1B]"
+        style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600;"
+      >
+        What's included
+      </h2>
+      <div class="mt-8 max-w-[700px] divide-y divide-[#1A1A1A]/15">
+        <div class="py-4 flex gap-4 items-start">
+          <span class="font-source text-[#991B1B] shrink-0 mt-0.5 select-none">—</span>
+          <p class="font-source text-[#1A1A1A] leading-[1.7]">
+            A website designed for your business, not adapted from a template
+          </p>
+        </div>
+        <div class="py-4 flex gap-4 items-start">
+          <span class="font-source text-[#991B1B] shrink-0 mt-0.5 select-none">—</span>
+          <p class="font-source text-[#1A1A1A] leading-[1.7]">
+            Hosting, SSL, daily backups, uptime monitoring
+          </p>
+        </div>
+        <div class="py-4 flex gap-4 items-start">
+          <span class="font-source text-[#991B1B] shrink-0 mt-0.5 select-none">—</span>
+          <p class="font-source text-[#1A1A1A] leading-[1.7]">
+            Changes by email — small things just get done; bigger things we'll tell you the cost
+            of before doing anything. No allowances to count, no surprises.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="max-w-[1000px] mx-auto border-t border-[#1A1A1A]/15" />
+
+    <!-- III. What costs extra -->
+    <section class="max-w-[1000px] mx-auto px-6 py-10">
+      <p class="section-num mb-2">III.</p>
+      <h2
+        class="font-fraunces text-[#1A1A1A] leading-[1.2] mb-3 pb-2 border-b border-[#991B1B]"
+        style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600;"
+      >
+        What costs extra (and what it costs)
+      </h2>
+      <p class="font-source italic text-[#4A4A4A] leading-[1.7] mt-6 mb-8 max-w-[600px]">
+        We publish this because the worst part of working with an agency is the surprise on the
+        invoice. There won't be one.
+      </p>
+      <div class="max-w-[700px] divide-y divide-[#1A1A1A]/15">
+        <div class="py-4 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
+          <span class="font-source text-[#1A1A1A] leading-[1.7] flex gap-4 items-start min-w-0">
+            <span class="text-[#991B1B] shrink-0 select-none">—</span>
+            A new page on your site
+          </span>
+          <span class="font-source font-bold text-[#1A1A1A] sm:ml-auto shrink-0 pl-6 sm:pl-0">
+            $50, flat
+          </span>
+        </div>
+        <div class="py-4 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
+          <span class="font-source text-[#1A1A1A] leading-[1.7] flex gap-4 items-start min-w-0">
+            <span class="text-[#991B1B] shrink-0 select-none">—</span>
+            A major redesign
+          </span>
+          <span class="font-source text-[#4A4A4A] text-sm sm:ml-auto shrink-0 pl-6 sm:pl-0">
+            quoted per project, in writing, before any work
+          </span>
+        </div>
+        <div class="py-4 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
+          <span class="font-source text-[#1A1A1A] leading-[1.7] flex gap-4 items-start min-w-0">
+            <span class="text-[#991B1B] shrink-0 select-none">—</span>
+            Integrations (booking, e-commerce, custom forms)
+          </span>
+          <span class="font-source text-[#4A4A4A] text-sm sm:ml-auto shrink-0 pl-6 sm:pl-0">
+            quoted per project
+          </span>
+        </div>
+        <div class="py-4 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
+          <span class="font-source text-[#1A1A1A] leading-[1.7] flex gap-4 items-start min-w-0">
+            <span class="text-[#991B1B] shrink-0 select-none">—</span>
+            Domain registration
+          </span>
+          <span class="font-source text-[#4A4A4A] text-sm sm:ml-auto shrink-0 pl-6 sm:pl-0">
+            at our cost, no markup
+          </span>
+        </div>
+        <div class="py-4 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
+          <span class="font-source text-[#1A1A1A] leading-[1.7] flex gap-4 items-start min-w-0">
+            <span class="text-[#991B1B] shrink-0 select-none">—</span>
+            Anything else
+          </span>
+          <span class="font-source text-[#4A4A4A] text-sm sm:ml-auto shrink-0 pl-6 sm:pl-0">
+            quoted in writing first, every time
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="max-w-[1000px] mx-auto border-t border-[#1A1A1A]/15" />
+
+    <!-- IV. Your website, your domain, always — editorial pull-quote -->
+    <section class="max-w-[1000px] mx-auto px-6 py-10">
+      <p class="section-num mb-2">IV.</p>
+      <h2
+        class="font-fraunces text-[#1A1A1A] leading-[1.2] mb-3 pb-2 border-b border-[#991B1B]"
+        style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600;"
+      >
+        Your website, your domain, always
+      </h2>
+      <div class="mt-8">
+        <!-- Large opening quote mark -->
+        <p
+          class="font-fraunces text-[#991B1B] leading-none select-none mb-0"
+          style="font-size: 7rem; line-height: 0.8;"
+          aria-hidden="true"
+        >
+          &ldquo;
+        </p>
+        <!-- Two-column pull-quote text -->
+        <div class="two-col">
+          <p
+            class="font-fraunces italic text-[#1A1A1A] leading-[1.65]"
+            style="font-size: clamp(1.15rem, 2vw, 1.4rem);"
+          >
+            If you leave us, we hand both over. The site files, the domain &mdash; yours to take
+            wherever you want, no fee, no fuss. Most agencies treat the inability to leave as a
+            feature. We think that&rsquo;s backwards.
+          </p>
+        </div>
+        <!-- Closing quote mark, right-aligned -->
+        <p
+          class="font-fraunces text-[#991B1B] leading-none text-right select-none mt-0"
+          style="font-size: 7rem; line-height: 0.8;"
+          aria-hidden="true"
+        >
+          &rdquo;
+        </p>
+      </div>
+    </section>
+
+    <hr class="max-w-[1000px] mx-auto border-t border-[#1A1A1A]/15" />
+
+    <!-- V. Who we are — drop cap, two-column -->
+    <section class="max-w-[1000px] mx-auto px-6 py-10">
+      <p class="section-num mb-2">V.</p>
+      <h2
+        class="font-fraunces text-[#1A1A1A] leading-[1.2] mb-3 pb-2 border-b border-[#991B1B]"
+        style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600;"
+      >
+        Who we are
+      </h2>
+      <p
+        class="font-source text-[#1A1A1A] leading-[1.7] mt-8 drop-cap two-col"
+        style="font-size: 1.0625rem;"
+      >
+        Open Sign Web Co is Nick and Richard, two brothers who&rsquo;ve been small business owners
+        and got tired of watching other small business owners get priced out of having a real
+        website. We started this to fix that.
+      </p>
+    </section>
+
+    <hr class="max-w-[1000px] mx-auto border-t border-[#1A1A1A]/15" />
+
+    <!-- VI. CTA -->
+    <section class="max-w-[1000px] mx-auto px-6 py-10">
+      <p class="section-num mb-2">VI.</p>
+      <h2
+        class="font-fraunces text-[#1A1A1A] leading-[1.2] mb-3 pb-2 border-b border-[#991B1B]"
+        style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600;"
+      >
+        Want to see what yours could look like?
+      </h2>
+      <p class="font-source text-[#1A1A1A] leading-[1.7] mt-6 max-w-[600px]">
+        Email us at <a
+          href="mailto:hello@opensignwebco.com"
+          class="text-[#991B1B] underline underline-offset-2 hover:text-[#1A1A1A]"
+        >hello@opensignwebco.com</a> with your business name and what you do. We&rsquo;ll send you
+        two quick mockups of what your site could look like, free, no commitment.
+      </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="max-w-[1000px] mx-auto px-6 pb-10 pt-4">
+      <hr class="border-t-[2px] border-[#991B1B] mb-6" />
+      <p class="font-source text-sm text-[#4A4A4A]">
+        Open Sign Web Co &middot; hello@opensignwebco.com &middot; 2026
+      </p>
+    </footer>
+
+  </div>
 </BaseLayout>
