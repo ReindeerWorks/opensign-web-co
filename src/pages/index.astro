@@ -223,18 +223,136 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       >
         Want to see what<br />yours could look like?
       </h2>
-      <p class="font-grotesk text-[#3B2F1F] leading-[1.5] max-w-[600px] md:pl-12" style="opacity: 0.85;">
-        Email us at{' '}
-        <a
-          href="mailto:hello@opensignwebco.com"
-          class="text-[#B45309] font-bold underline underline-offset-2 hover:opacity-70"
-        >
-          hello@opensignwebco.com
-        </a>{' '}
-        with your business name and what you do. We'll send you two quick mockups of what your site
-        could look like, free, no commitment.
+      <p class="font-grotesk text-[#3B2F1F] leading-[1.5] max-w-[600px] md:pl-12 mb-10" style="opacity: 0.85;">
+        Tell us your business name and what you do. We'll send you two quick mockups of what your
+        site could look like, free, no commitment.
       </p>
+
+      <form
+        id="contact-form"
+        class="md:pl-12 max-w-[640px] grid gap-5"
+        novalidate
+      >
+        <label class="grid gap-2">
+          <span class="font-grotesk font-bold text-[#3B2F1F] uppercase tracking-wide" style="font-size: 0.875rem;">Your name</span>
+          <input
+            type="text"
+            name="name"
+            required
+            class="font-grotesk text-[#3B2F1F] bg-[#F5EDDC] border-[3px] border-[#3B2F1F] px-4 py-3"
+            style="font-size: 1rem; outline: none;"
+          />
+        </label>
+
+        <label class="grid gap-2">
+          <span class="font-grotesk font-bold text-[#3B2F1F] uppercase tracking-wide" style="font-size: 0.875rem;">Business name</span>
+          <input
+            type="text"
+            name="businessName"
+            required
+            class="font-grotesk text-[#3B2F1F] bg-[#F5EDDC] border-[3px] border-[#3B2F1F] px-4 py-3"
+            style="font-size: 1rem; outline: none;"
+          />
+        </label>
+
+        <label class="grid gap-2">
+          <span class="font-grotesk font-bold text-[#3B2F1F] uppercase tracking-wide" style="font-size: 0.875rem;">What you do</span>
+          <textarea
+            name="description"
+            required
+            rows="4"
+            class="font-grotesk text-[#3B2F1F] bg-[#F5EDDC] border-[3px] border-[#3B2F1F] px-4 py-3 resize-y"
+            style="font-size: 1rem; outline: none;"
+          ></textarea>
+        </label>
+
+        <label class="grid gap-2">
+          <span class="font-grotesk font-bold text-[#3B2F1F] uppercase tracking-wide" style="font-size: 0.875rem;">Your email</span>
+          <input
+            type="email"
+            name="email"
+            required
+            class="font-grotesk text-[#3B2F1F] bg-[#F5EDDC] border-[3px] border-[#3B2F1F] px-4 py-3"
+            style="font-size: 1rem; outline: none;"
+          />
+        </label>
+
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4 mt-2">
+          <button
+            type="submit"
+            class="font-grotesk font-bold uppercase tracking-wide bg-[#B45309] text-[#F5EDDC] border-[3px] border-[#3B2F1F] px-8 py-4 hover:opacity-90 disabled:opacity-50"
+            style="font-size: 1rem; cursor: pointer;"
+          >
+            Send it over
+          </button>
+          <p
+            id="contact-status"
+            class="font-grotesk text-[#3B2F1F] leading-[1.5]"
+            style="font-size: 0.95rem; opacity: 0.85;"
+            aria-live="polite"
+          ></p>
+        </div>
+      </form>
     </section>
+
+    <script is:inline>
+      (function () {
+        const form = document.getElementById('contact-form');
+        if (!form) return;
+        const status = document.getElementById('contact-status');
+        const button = form.querySelector('button[type="submit"]');
+
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          if (!status || !button) return;
+
+          status.style.color = '#3B2F1F';
+          status.textContent = 'Sending…';
+          button.disabled = true;
+
+          const data = new FormData(form);
+          const payload = {
+            name: String(data.get('name') || '').trim(),
+            businessName: String(data.get('businessName') || '').trim(),
+            description: String(data.get('description') || '').trim(),
+            email: String(data.get('email') || '').trim(),
+          };
+
+          if (!payload.name || !payload.businessName || !payload.description || !payload.email) {
+            status.style.color = '#B45309';
+            status.textContent = 'Please fill in every field before sending.';
+            button.disabled = false;
+            return;
+          }
+
+          try {
+            const res = await fetch('/api/contact', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+            });
+            const body = await res.json().catch(() => ({}));
+
+            if (res.ok && body && body.success) {
+              form.reset();
+              status.style.color = '#3B2F1F';
+              status.textContent = "Got it — we'll be in touch soon.";
+            } else {
+              status.style.color = '#B45309';
+              status.textContent =
+                (body && body.error) ||
+                "Something went wrong — try again, or email hello@opensignwebco.com directly.";
+            }
+          } catch {
+            status.style.color = '#B45309';
+            status.textContent =
+              "Couldn't reach the server — try again, or email hello@opensignwebco.com directly.";
+          } finally {
+            button.disabled = false;
+          }
+        });
+      })();
+    </script>
 
     <!-- Footer -->
     <footer class="border-t-[4px] border-[#3B2F1F]">
