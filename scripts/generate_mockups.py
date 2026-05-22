@@ -125,10 +125,14 @@ DNA: Warm Hospitality
 Typography: Google Fonts only. Pick ONE display font from: Playfair Display, Lora,
 Cormorant Garamond, Crimson Text. Pair with one body font from: Source Serif Pro,
 Libre Baskerville, PT Serif. You may add one handwritten accent (Dancing Script or
-Caveat) used sparingly — one decorative element only. Whenever you use the
-handwritten accent font, ensure the text color has strong contrast against its
-background — dark text on light backgrounds, light text on dark. Never render
-handwritten text in a color close to the background color.
+Caveat) used sparingly — one decorative element only.
+
+Contrast: every text element must have strong contrast against its background
+regardless of font, size, or weight. Dark text (#3B2F1F or similar) on light
+backgrounds; light text (#FAF7F2 or similar) on dark backgrounds. This applies
+to ALL text including handwritten accents, section headings, subheadings, and
+decorative overlays. Never render any text in a color close to its background
+color.
 
 Palette: Build a 4-color scheme using these ranges:
   cream:      #FAF7F2–#F5ECD7
@@ -136,14 +140,18 @@ Palette: Build a 4-color scheme using these ranges:
   sage:       #7A8C6E–#6B7F5E
   warm brown: #5C3D2E–#4A3728
 Pick one accent (terracotta or sage) and one near-neutral (cream or warm brown).
+Use only the color ranges listed above. Do not introduce colors outside these
+ranges — no navy, no dark blue-gray, no cool tones.
 
 Voice: Warm, conversational, first or second person. Short sentences. Reads like a
 person wrote it, not a marketing team. No filler phrases. No "supercharge your",
 "the modern way to", "seamlessly", "passionate about", "dedicated to".
 
-Imagery: CSS gradient blocks only — no <img> tags, no external image URLs. Use warm
-terracotta-to-cream gradients for visual breaks and section backgrounds. Make them
-feel intentional, not placeholder-ish: vary dimensions, layer them with text.
+Imagery: CSS gradient blocks only — no <img> tags, no external image URLs.
+Gradient blocks must be full-bleed sections (full page width, meaningful height)
+with real text content layered on top. Never use floating circles, decorative
+shapes, or empty bordered boxes as imagery placeholders. Every visual section
+must contain readable text.
 
 Layout: Mobile-first. Must render correctly at 375px width. All CSS in a single
 <style> block in <head>. No JavaScript. No external CSS. Only external dependency:
@@ -160,6 +168,7 @@ Explicitly forbidden:
 - Glassmorphism or frosted glass
 - Emoji as decoration
 - Generic stock imagery URLs (placeholder.com, via.placeholder.com, etc.)
+- Floating decorative shapes (circles, blobs, abstract elements) used as imagery substitutes
 - Lorem ipsum"""
 
 USER_PROMPT_PREFIX = """Generate a complete website mockup for the business described in the brief below.

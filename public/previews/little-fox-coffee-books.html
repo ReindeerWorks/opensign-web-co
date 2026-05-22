@@ -5,466 +5,473 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Little Fox Coffee & Books - Hanover, PA</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Serif+Pro:wght@300;400;600&family=Dancing+Script:wght@400;600&display=swap');
-
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Serif+Pro:wght@400;600&family=Dancing+Script:wght@500&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        :root {
-            --cream: #F5ECD7;
-            --terracotta: #C4603A;
-            --sage: #7A8C6E;
-            --warm-brown: #4A3728;
-        }
-
+        
         body {
             font-family: 'Source Serif Pro', serif;
+            font-size: 18px;
             line-height: 1.6;
-            color: var(--warm-brown);
-            background-color: var(--cream);
+            color: #3B2F1F;
+            background-color: #FAF7F2;
         }
-
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            color: var(--warm-brown);
-        }
-
-        h2 {
-            font-size: 2rem;
-            color: var(--warm-brown);
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            color: var(--terracotta);
-        }
-
-        .accent-script {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.3rem;
-            color: var(--warm-brown);
-            font-weight: 600;
-        }
-
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
-        /* Header */
-        header {
-            background: var(--cream);
-            padding: 20px 0;
-            border-bottom: 2px solid rgba(116, 83, 62, 0.1);
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: #3B2F1F;
+            margin-bottom: 1rem;
         }
-
-        .header-content {
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #C4603A, #B85C38);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: #FAF7F2;
+            position: relative;
+        }
+        
+        .hero-content {
+            text-align: left;
+            max-width: 600px;
+        }
+        
+        .hero h1 {
+            color: #FAF7F2;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .hero .tagline {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: #FAF7F2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #FAF7F2;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #5C3D2E;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
-
+        
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: var(--warm-brown);
+            color: #FAF7F2;
+            text-decoration: none;
         }
-
-        .hours {
-            font-size: 0.9rem;
-            color: var(--sage);
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
-
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, rgba(196, 96, 58, 0.15) 0%, rgba(245, 236, 215, 0.9) 100%);
-            padding: 60px 0;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            margin-bottom: 20px;
-        }
-
-        .hero-tagline {
-            font-size: 1.2rem;
-            color: var(--sage);
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-
-        .loft-visual {
-            height: 200px;
-            background: linear-gradient(45deg, var(--terracotta) 0%, var(--sage) 50%, var(--cream) 100%);
-            border-radius: 12px;
-            margin: 30px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .loft-visual::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            right: 20px;
-            bottom: 20px;
-            background: rgba(245, 236, 215, 0.9);
-            border-radius: 8px;
-        }
-
-        .loft-visual::after {
-            content: 'Curl up in our reading loft';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: var(--warm-brown);
-            font-size: 1.1rem;
-            text-align: center;
-        }
-
-        /* Drinks Section */
-        .drinks {
-            padding: 60px 0;
-            background: var(--cream);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .signature-drink {
-            background: linear-gradient(135deg, rgba(122, 140, 110, 0.1) 0%, rgba(245, 236, 215, 1) 100%);
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 40px;
-            border-left: 4px solid var(--terracotta);
-        }
-
-        .drink-name {
-            color: var(--terracotta);
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-
-        .drink-combo {
-            font-size: 1rem;
-            color: var(--sage);
-            margin-bottom: 15px;
-        }
-
-        .drink-price {
+        
+        .nav-links a {
+            color: #FAF7F2;
+            text-decoration: none;
             font-weight: 600;
-            color: var(--warm-brown);
         }
-
-        .coffee-highlight {
-            text-align: center;
-            padding: 20px;
-            background: rgba(196, 96, 58, 0.05);
+        
+        .nav-links a:hover {
+            color: #F5ECD7;
+        }
+        
+        /* Sections */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-alt {
+            background-color: #F5ECD7;
+        }
+        
+        .section-dark {
+            background: linear-gradient(135deg, #7A8C6E, #6B7F5E);
+            color: #FAF7F2;
+        }
+        
+        .section-dark h2, .section-dark h3 {
+            color: #FAF7F2;
+        }
+        
+        /* Drinks Section */
+        .drinks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .drink-card {
+            background: #FAF7F2;
+            padding: 2rem;
             border-radius: 8px;
+            border: 2px solid #C4603A;
         }
-
-        .coffee-description {
-            font-style: italic;
-            color: var(--sage);
-            margin-top: 10px;
+        
+        .drink-card h3 {
+            color: #5C3D2E;
+            margin-bottom: 0.5rem;
         }
-
+        
+        .drink-card .price {
+            font-weight: 600;
+            color: #C4603A;
+            margin-top: 0.5rem;
+        }
+        
         /* Books Section */
-        .books {
-            padding: 60px 0;
-            background: linear-gradient(180deg, var(--cream) 0%, rgba(122, 140, 110, 0.08) 100%);
-        }
-
-        .books-grid {
+        .books-content {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
         }
-
+        
         .book-category {
-            background: var(--cream);
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid rgba(196, 96, 58, 0.1);
-        }
-
-        .book-category h3 {
-            margin-bottom: 15px;
-        }
-
-        /* Community Section */
-        .community {
-            padding: 60px 0;
-            background: var(--cream);
-        }
-
-        .book-clubs {
-            background: linear-gradient(135deg, rgba(196, 96, 58, 0.08) 0%, rgba(245, 236, 215, 1) 100%);
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-        }
-
-        .staff-note {
-            text-align: center;
-            padding: 25px;
-            background: rgba(122, 140, 110, 0.1);
+            background: #FAF7F2;
+            padding: 2rem;
             border-radius: 8px;
-            margin-top: 30px;
+            border-left: 4px solid #7A8C6E;
         }
-
-        .staff-note .accent-script {
-            color: var(--warm-brown);
+        
+        /* Events Section */
+        .events-list {
+            margin-top: 2rem;
         }
-
+        
+        .event-item {
+            background: #FAF7F2;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #C4603A;
+        }
+        
+        .event-item h3 {
+            color: #5C3D2E;
+            margin-bottom: 0.5rem;
+        }
+        
+        .event-time {
+            color: #7A8C6E;
+            font-weight: 600;
+        }
+        
         /* About Section */
-        .about {
-            padding: 60px 0;
-            background: linear-gradient(45deg, rgba(122, 140, 110, 0.15) 0%, var(--cream) 100%);
-        }
-
         .about-content {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        /* Location Section */
-        .location {
-            padding: 60px 0;
-            background: var(--cream);
-        }
-
-        .location-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
         }
-
-        .location-card {
-            background: linear-gradient(135deg, rgba(196, 96, 58, 0.05) 0%, var(--cream) 100%);
-            padding: 25px;
-            border-radius: 12px;
-            border-left: 3px solid var(--sage);
+        
+        /* Location Section */
+        .location-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
-
-        .location-card h3 {
-            color: var(--sage);
-            margin-bottom: 15px;
+        
+        .info-card {
+            background: #F5ECD7;
+            padding: 2rem;
+            border-radius: 8px;
         }
-
+        
+        .info-card h3 {
+            color: #5C3D2E;
+            margin-bottom: 1rem;
+        }
+        
         .hours-list {
             list-style: none;
         }
-
+        
         .hours-list li {
-            padding: 5px 0;
-            border-bottom: 1px solid rgba(196, 96, 58, 0.1);
+            display: flex;
+            justify-content: space-between;
+            padding: 0.25rem 0;
+            border-bottom: 1px solid #C4603A;
         }
-
-        .closed {
-            color: var(--sage);
-            font-style: italic;
-        }
-
+        
         /* Footer */
         footer {
-            background: var(--warm-brown);
-            color: var(--cream);
-            padding: 40px 0;
+            background-color: #4A3728;
+            color: #FAF7F2;
+            padding: 3rem 0 2rem;
             text-align: center;
         }
-
+        
         .footer-content {
-            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
-
-        .contact-info {
-            margin-bottom: 15px;
+        
+        .footer-section h3 {
+            color: #FAF7F2;
+            margin-bottom: 1rem;
         }
-
-        .contact-info a {
-            color: var(--cream);
+        
+        .footer-section a {
+            color: #F5ECD7;
             text-decoration: none;
         }
-
-        .contact-info a:hover {
-            color: rgba(245, 236, 215, 0.8);
+        
+        .footer-section a:hover {
+            color: #FAF7F2;
         }
-
-        /* Mobile Responsive */
-        @media (min-width: 768px) {
-            .header-content {
-                flex-direction: row;
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
             }
-
-            .books-grid {
-                grid-template-columns: repeat(2, 1fr);
+            
+            .nav-links {
+                gap: 1rem;
             }
-
-            .location-grid {
-                grid-template-columns: repeat(2, 1fr);
+            
+            .drinks-grid, .books-content, .location-info {
+                grid-template-columns: 1fr;
+            }
+            
+            section {
+                padding: 3rem 0;
             }
         }
-
-        @media (min-width: 1024px) {
-            .books-grid {
-                grid-template-columns: repeat(3, 1fr);
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
             }
-
-            .location-grid {
-                grid-template-columns: repeat(3, 1fr);
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            body {
+                font-size: 16px;
             }
         }
     </style>
 </head>
 <body>
-    <header>
+    <nav>
         <div class="container">
-            <div class="header-content">
-                <div class="logo">Little Fox Coffee & Books</div>
-                <div class="hours">Tue–Sat 8am–8pm</div>
+            <div class="nav-container">
+                <a href="#" class="logo">Little Fox</a>
+                <ul class="nav-links">
+                    <li><a href="#drinks">Drinks</a></li>
+                    <li><a href="#books">Books</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#location">Visit</a></li>
+                </ul>
             </div>
         </div>
-    </header>
+    </nav>
 
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Where stories meet steam</h1>
-                <p class="hero-tagline">An independent shop in downtown Hanover combining carefully sourced coffee with new and used books for every reader.</p>
-                <div class="loft-visual"></div>
+                <h1>Little Fox Coffee & Books</h1>
+                <p class="tagline">Where stories brew alongside your coffee</p>
+                <p>Discover your next favorite book in our quiet loft while sipping Seattle-sourced coffee. We're the calm corner of downtown Hanover where every visit feels like coming home.</p>
             </div>
         </div>
     </section>
 
-    <section class="drinks">
+    <section id="drinks">
         <div class="container">
-            <div class="section-header">
-                <h2>Coffee & More</h2>
-                <p class="accent-script">Sourced with care, brewed with intention</p>
-            </div>
-
-            <div class="signature-drink">
-                <div class="drink-name">Our Signature: Caramelized Banana Chai</div>
-                <div class="drink-combo">16oz hot, perfectly paired with a locally made sourdough chocolate chip bagel</div>
-                <div class="drink-price">Complete experience under $20 (with a book!)</div>
-            </div>
-
-            <div class="coffee-highlight">
-                <h3>Seattle-Sourced Espresso</h3>
-                <p class="coffee-description">Smooth, fruity roasts that go beyond standard café fare. Our americanos showcase out-of-the-ordinary beans worth talking about.</p>
-            </div>
-
-            <p style="text-align: center; margin-top: 30px; color: var(--sage);">Coffee, espresso, tea, and specialty drinks. Decaf options available. All served with the kind of care you'd want in your own kitchen.</p>
-        </div>
-    </section>
-
-    <section class="books">
-        <div class="container">
-            <div class="section-header">
-                <h2>New & Used Books</h2>
-                <p>Every age, every interest, every story you're looking for.</p>
-            </div>
-
-            <div class="books-grid">
-                <div class="book-category">
-                    <h3>For Young Readers</h3>
-                    <p>Picture books, chapter books, and young adult titles. We believe every child should find themselves in a story.</p>
+            <h2>Crafted Drinks & Local Treats</h2>
+            <p>Our coffee comes from Seattle roasters who source extraordinary beans. Every cup tells a story worth savoring.</p>
+            
+            <div class="drinks-grid">
+                <div class="drink-card">
+                    <h3>Caramelized Banana Chai</h3>
+                    <p>Our signature drink that pairs perfectly with a good chapter. Rich, warming spices meet sweet banana notes.</p>
+                    <p class="price">$5.50 (16oz hot)</p>
                 </div>
-
-                <div class="book-category">
-                    <h3>Fiction & Literature</h3>
-                    <p>New releases and beloved classics. Stories that transport you right from our cozy reading loft.</p>
+                
+                <div class="drink-card">
+                    <h3>Seattle Americano</h3>
+                    <p>Smooth, fruity roast that's anything but ordinary. We choose beans that coffee lovers actually want to taste.</p>
+                    <p class="price">$4.25</p>
                 </div>
-
-                <div class="book-category">
-                    <h3>Specialty Finds</h3>
-                    <p>Used gems, local authors, and those hard-to-find titles you've been searching for. Ask us—we love a good book hunt.</p>
+                
+                <div class="drink-card">
+                    <h3>Local Sourdough Bagel</h3>
+                    <p>Chocolate chip sourdough made right here in Hanover. Ask for extra cream cheese if you're staying a while.</p>
+                    <p class="price">$3.75</p>
+                </div>
+                
+                <div class="drink-card">
+                    <h3>Tea & Decaf Options</h3>
+                    <p>Full selection of teas and decaf coffee because great books deserve great drinks at any hour.</p>
+                    <p class="price">From $3.50</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="community">
+    <section id="books" class="section-alt">
         <div class="container">
-            <div class="section-header">
-                <h2>Book Clubs & Events</h2>
-            </div>
-
-            <div class="book-clubs">
-                <h3>Multiple Book Clubs</h3>
-                <p>Different groups, different genres, same love of good discussion. Whether you're into literary fiction or mystery thrillers, there's a circle for you here.</p>
-            </div>
-
-            <p style="text-align: center;">Community events happen regularly. This is a gathering place, not just a retail stop. Check in with us or follow along to see what's coming up.</p>
-
-            <div class="staff-note">
-                <p class="accent-script">Our staff loves talking books as much as coffee</p>
-                <p>Need a recommendation? Want to know more about that roast? We're enthusiastic guides for both sides of what we do.</p>
+            <h2>Books for Every Reader</h2>
+            <p>New releases sit alongside hidden gems you won't find anywhere else. Our staff knows both the shelves and your next great read.</p>
+            
+            <div class="books-content">
+                <div class="book-category">
+                    <h3>New & Recent Releases</h3>
+                    <p>Fresh off the press and carefully chosen. We stock the books everyone's talking about plus the ones they should be.</p>
+                </div>
+                
+                <div class="book-category">
+                    <h3>Used & Rare Finds</h3>
+                    <p>Previous owners' treasures become yours. Browse for that perfect edition or stumble upon something completely unexpected.</p>
+                </div>
+                
+                <div class="book-category">
+                    <h3>All Ages Welcome</h3>
+                    <p>Picture books for little hands, young adult adventures, and grown-up stories. Every family member finds something here.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="about">
+    <section id="events" class="section-dark">
         <div class="container">
+            <h2>Book Clubs & Community</h2>
+            <p>Reading is better when shared. Join our book clubs or attend events where stories bring people together.</p>
+            
+            <div class="events-list">
+                <div class="event-item">
+                    <h3>Fiction Book Club</h3>
+                    <p class="event-time">First Tuesday • 7:00 PM</p>
+                    <p>Literary fiction lovers gather monthly to discuss our current selection. New members always welcome.</p>
+                </div>
+                
+                <div class="event-item">
+                    <h3>Mystery & Thriller Club</h3>
+                    <p class="event-time">Third Thursday • 6:30 PM</p>
+                    <p>For readers who love a good plot twist. We tackle everything from cozy mysteries to psychological thrillers.</p>
+                </div>
+                
+                <div class="event-item">
+                    <h3>Author Readings</h3>
+                    <p class="event-time">Monthly • Various Times</p>
+                    <p>Local and visiting authors share their work in our intimate space. Check our social media for upcoming events.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Little Fox</h2>
             <div class="about-content">
-                <h2>Quietly Magical</h2>
-                <p>That's what people say when they find us. We're less a café that sells books and more a reading room that happens to brew great drinks.</p>
+                <div>
+                    <h3>Our Story</h3>
+                    <p>We opened because Hanover needed a place where coffee and books could coexist peacefully. Not a café with a few novels on display, but a real bookshop that happens to brew exceptional drinks.</p>
+                    <p>Every morning, we arrange our books like old friends waiting to meet new people. Every cup we serve is chosen for coffee lovers, not just caffeine seekers.</p>
+                </div>
                 
-                <p>The loft upstairs gives you a tucked-away spot to settle in. The shelves below invite you to browse. The whole space feels like what a neighborhood bookshop should be—unhurried, genuinely welcoming, community-rooted.</p>
-                
-                <p>We're not trying to be the biggest or the loudest. We're trying to be the place you want to come back to.</p>
+                <div>
+                    <h3>The Loft Experience</h3>
+                    <p>Climb our stairs to find our hidden loft reading area. It's the spot regular customers protect like a secret—quiet, tucked away, perfect for getting lost in your latest find.</p>
+                    <p>Our staff loves talking books as much as coffee. Ask for recommendations. We read what we sell and drink what we serve.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="location">
+    <section id="location" class="section-alt">
         <div class="container">
-            <div class="section-header">
-                <h2>Find Us in Downtown Hanover</h2>
-            </div>
-
-            <div class="location-grid">
-                <div class="location-card">
-                    <h3>Address</h3>
-                    <p>125 Broadway<br>Hanover, PA 17331</p>
-                    <p style="margin-top: 10px; color: var(--sage);">Dine-in only. We accept credit, debit, and contactless payments.</p>
+            <h2>Find Us in Downtown Hanover</h2>
+            <p>We're right on Broadway, with paid street parking and wheelchair-accessible spots nearby. Come as you are—we accept all payment types except cash.</p>
+            
+            <div class="location-info">
+                <div class="info-card">
+                    <h3>Address & Contact</h3>
+                    <p><strong>125 Broadway<br>Hanover, PA 17331</strong></p>
+                    <p><strong>Phone:</strong> (717) 316-0019</p>
+                    <p><strong>Website:</strong> littlefoxbooks.co</p>
                 </div>
-
-                <div class="location-card">
+                
+                <div class="info-card">
                     <h3>Hours</h3>
                     <ul class="hours-list">
-                        <li class="closed">Monday: Closed</li>
-                        <li>Tuesday–Saturday: 8am–8pm</li>
-                        <li class="closed">Sunday: Closed</li>
+                        <li><span>Monday</span><span>Closed</span></li>
+                        <li><span>Tuesday</span><span>8am–8pm</span></li>
+                        <li><span>Wednesday</span><span>8am–8pm</span></li>
+                        <li><span>Thursday</span><span>8am–8pm</span></li>
+                        <li><span>Friday</span><span>8am–8pm</span></li>
+                        <li><span>Saturday</span><span>8am–8pm</span></li>
+                        <li><span>Sunday</span><span>Closed</span></li>
                     </ul>
                 </div>
-
-                <div class="location-card">
-                    <h3>Parking</h3>
-                    <p>Paid street parking available. Wheelchair-accessible parking spots nearby.</p>
-                    <p style="margin-top: 15px; color: var(--sage);">Downtown location makes us walkable from most of Hanover's core.</p>
+                
+                <div class="info-card">
+                    <h3>Good to Know</h3>
+                    <p><strong>Parking:</strong> Paid street parking available</p>
+                    <p><strong>Accessibility:</strong> Wheelchair-accessible parking nearby</p>
+                    <p><strong>Payment:</strong> Credit, debit, contactless accepted</p>
+                    <p><strong>Service:</strong> Dine-in only • No delivery</p>
                 </div>
             </div>
         </div>
@@ -473,14 +480,23 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="contact-info">
-                    <p><strong>Little Fox Coffee & Books</strong></p>
-                    <p>125 Broadway, Hanover, PA 17331</p>
-                    <p><a href="tel:7173160019">(717) 316-0019</a></p>
-                    <p><a href="http://littlefoxbooks.co">littlefoxbooks.co</a></p>
+                <div class="footer-section">
+                    <h3>Visit Us</h3>
+                    <p>125 Broadway<br>Hanover, PA 17331<br>(717) 316-0019</p>
                 </div>
-                <p style="font-size: 0.9rem; color: rgba(245, 236, 215, 0.8);">Come for the coffee, stay for the stories.</p>
+                
+                <div class="footer-section">
+                    <h3>Hours</h3>
+                    <p>Tuesday–Saturday: 8am–8pm<br>Closed Mondays & Sundays</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <p><a href="http://littlefoxbooks.co">littlefoxbooks.co</a><br>Follow us for events & new arrivals</p>
+                </div>
             </div>
+            
+            <p>&copy; 2024 Little Fox Coffee & Books. A quiet corner for coffee, books, and community.</p>
         </div>
     </footer>
 </body>

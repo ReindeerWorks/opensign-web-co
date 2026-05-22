@@ -5,435 +5,507 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Decked Out Donuts - Hanover, PA</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Serif+Pro:wght@400;600&family=Dancing+Script:wght@700&display=swap');
-
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+Pro:wght@400;600&family=Dancing+Script:wght@500&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
             font-family: 'Source Serif Pro', serif;
             line-height: 1.6;
             color: #4A3728;
-            background-color: #FAF7F2;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: linear-gradient(135deg, #C4603A, #B85C38);
-            color: #FAF7F2;
-            padding: 1rem 0;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        .contact-quick {
-            font-size: 0.9rem;
-            text-align: right;
-        }
-
+        
         .hero {
-            background: #F5ECD7;
-            padding: 3rem 0;
+            background: linear-gradient(135deg, #FAF7F2 0%, #F5ECD7 100%);
+            padding: 2rem 1rem 3rem;
             text-align: center;
-        }
-
-        .hero-visual {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(45deg, #C4603A 0%, #B85C38 25%, #FAF7F2 75%, #F5ECD7 100%);
-            border-radius: 20px;
-            margin-bottom: 2rem;
             position: relative;
             overflow: hidden;
         }
-
-        .hero-visual::after {
+        
+        .hero::before {
             content: '';
             position: absolute;
-            top: 20%;
-            left: 10%;
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle, #FAF7F2 30%, transparent 30%);
-            border-radius: 50%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #C4603A20, #B85C3820, #C4603A30);
+            opacity: 0.1;
         }
-
-        .hero-visual::before {
-            content: '';
-            position: absolute;
-            bottom: 25%;
-            right: 15%;
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle, #B85C38 40%, transparent 40%);
-            border-radius: 50%;
+        
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
         }
-
-        .hero h1 {
+        
+        h1 {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
             color: #4A3728;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(74, 55, 40, 0.1);
         }
-
-        .hero-subtext {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
+        
+        .hero-subtitle {
+            font-size: 1.1rem;
             color: #5C3D2E;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
         }
-
-        .urgency-box {
+        
+        .urgency-banner {
             background: #C4603A;
             color: #FAF7F2;
-            padding: 1rem;
-            border-radius: 10px;
-            margin: 2rem 0;
+            padding: 0.75rem 1rem;
+            border-radius: 25px;
+            display: inline-block;
             font-weight: 600;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(196, 96, 58, 0.3);
+        }
+        
+        .cta-button {
+            background: #B85C38;
+            color: #FAF7F2;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(184, 92, 56, 0.4);
+        }
+        
+        .cta-button:hover {
+            background: #C4603A;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(196, 96, 58, 0.5);
         }
 
-        .accent-text {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.5rem;
-            color: #4A3728;
-            font-weight: 700;
+        .hero-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-cta .urgency-banner {
+            margin-bottom: 0;
         }
 
         .section {
-            padding: 3rem 0;
+            padding: 3rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-
+        
+        .flavors-section {
+            background: #F5ECD7;
+        }
+        
         .section h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
+            color: #4A3728;
             text-align: center;
             margin-bottom: 2rem;
-            color: #4A3728;
+            font-weight: 600;
         }
-
+        
         .flavors-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
-            margin: 2rem 0;
+            margin-top: 2rem;
         }
-
+        
         .flavor-card {
             background: #FAF7F2;
-            border: 2px solid #F5ECD7;
             padding: 1.5rem;
             border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(74, 55, 40, 0.1);
+            box-shadow: 0 4px 15px rgba(74, 55, 40, 0.1);
+            border: 2px solid #B85C38;
         }
-
-        .flavor-visual {
-            width: 100%;
-            height: 120px;
-            background: linear-gradient(135deg, #C4603A, #F5ECD7);
-            border-radius: 50%;
-            margin-bottom: 1rem;
-        }
-
-        .flavor-card h3 {
+        
+        .flavor-name {
             font-family: 'Playfair Display', serif;
             font-size: 1.3rem;
+            color: #4A3728;
+            font-weight: 600;
             margin-bottom: 0.5rem;
-            color: #5C3D2E;
         }
-
-        .custom-section {
-            background: linear-gradient(135deg, #F5ECD7, #FAF7F2);
-            padding: 3rem 0;
+        
+        .flavor-description {
+            color: #5C3D2E;
+            font-size: 0.95rem;
+        }
+        
+        .custom-orders {
+            background: linear-gradient(135deg, #C4603A 0%, #B85C38 100%);
+            color: #FAF7F2;
+        }
+        
+        .custom-orders h2 {
+            color: #FAF7F2;
+        }
+        
+        .custom-orders p {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .custom-orders .cta-button {
+            background: #FAF7F2;
+            color: #B85C38;
+        }
+        
+        .custom-orders .cta-button:hover {
+            background: #F5ECD7;
+        }
+        
+        .hours-location {
+            background: #FAF7F2;
             text-align: center;
         }
-
-        .custom-box {
-            background: #FAF7F2;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 6px 20px rgba(74, 55, 40, 0.15);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .hours-location {
-            background: #5C3D2E;
-            color: #FAF7F2;
-            padding: 3rem 0;
-        }
-
+        
         .hours-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
-
-        .hours-box, .location-box {
-            background: rgba(250, 247, 242, 0.1);
+        
+        .hours-card, .location-card {
+            background: #F5ECD7;
             padding: 1.5rem;
             border-radius: 15px;
+            border: 2px solid #C4603A;
         }
-
-        .day-row {
+        
+        .hours-card h3, .location-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: #4A3728;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .limited-days {
+            background: #B85C38;
+            color: #FAF7F2;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .day-hours {
             display: flex;
             justify-content: space-between;
             margin-bottom: 0.5rem;
-            border-bottom: 1px solid rgba(250, 247, 242, 0.2);
-            padding-bottom: 0.3rem;
+            font-size: 0.95rem;
         }
-
+        
         .closed {
-            color: #C4603A;
+            color: #B85C38;
             font-weight: 600;
         }
-
+        
         .reviews-section {
-            padding: 3rem 0;
-            background: #F5ECD7;
+            background: linear-gradient(135deg, #F5ECD7 0%, #FAF7F2 100%);
         }
-
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
         .review-card {
             background: #FAF7F2;
             padding: 1.5rem;
             border-radius: 15px;
-            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(74, 55, 40, 0.1);
             border-left: 4px solid #C4603A;
         }
-
+        
         .review-text {
             font-style: italic;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .reviewer {
-            font-weight: 600;
             color: #5C3D2E;
+            margin-bottom: 1rem;
         }
-
+        
+        .review-highlight {
+            color: #B85C38;
+            font-weight: 600;
+        }
+        
         .gallery-section {
-            padding: 3rem 0;
+            background: #4A3728;
+            color: #FAF7F2;
+            text-align: center;
         }
-
+        
+        .gallery-section h2 {
+            color: #FAF7F2;
+        }
+        
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
-            margin: 2rem 0;
+            margin-top: 2rem;
         }
-
+        
         .gallery-item {
+            background: linear-gradient(45deg, #C4603A, #B85C38);
             height: 200px;
             border-radius: 15px;
-            background: linear-gradient(45deg, #C4603A, #B85C38, #FAF7F2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
-
-        .gallery-item:nth-child(2n) {
-            background: linear-gradient(135deg, #F5ECD7, #C4603A);
+        
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 30%, rgba(250, 247, 242, 0.1) 70%);
         }
-
-        .gallery-item:nth-child(3n) {
-            background: linear-gradient(90deg, #B85C38, #FAF7F2, #F5ECD7);
-        }
-
-        footer {
-            background: #4A3728;
+        
+        .gallery-caption {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2rem;
             color: #FAF7F2;
-            padding: 2rem 0;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer {
+            background: #5C3D2E;
+            color: #FAF7F2;
+            padding: 2rem 1rem;
             text-align: center;
         }
-
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 0.5rem;
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info {
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info a {
+            color: #FAF7F2;
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            color: #F5ECD7;
+        }
+        
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
             }
-
-            .hero h1 {
-                font-size: 2rem;
+            
+            .hero {
+                padding: 4rem 2rem 5rem;
             }
-
-            .hours-grid {
-                grid-template-columns: 1fr;
+            
+            .section {
+                padding: 4rem 2rem;
+            }
+            
+            .cta-button {
+                font-size: 1.2rem;
+                padding: 1.25rem 2.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">Decked Out Donuts</div>
-                <div class="contact-quick">
-                    <div>(717) 698-0819</div>
-                    <div>1185 High St, Hanover, PA</div>
-                </div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Decked Out Donuts</h1>
+            <p class="hero-subtitle">Scratch-made donuts with elaborate decorations that'll make your Instagram jealous</p>
+            <div class="hero-cta">
+                <div class="urgency-banner">Lines form before we open — get here early!</div>
+                <a href="#flavors" class="cta-button">See Current Flavors</a>
+                <a href="#hours" class="cta-button">Check Hours</a>
             </div>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <div class="hero-visual"></div>
-                <h1>Fresh Strawberries on Donuts?</h1>
-                <p class="hero-subtext">We're the ones doing it. Scratch-made donuts with toppings that'll make you stop scrolling.</p>
-                <div class="urgency-box">
-                    <strong>Fair warning:</strong> We sell out fast. Lines form before we open. Get here early or miss out.
-                </div>
-                <p class="accent-text">Worth the wait, every single time</p>
+    <section id="flavors" class="section flavors-section">
+        <h2>This Week's Decked Out Creations</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: #5C3D2E;">Fresh toppings, light dough, and flavors that sell out fast. We rotate weekly — follow us to see what's coming next.</p>
+        
+        <div class="flavors-grid">
+            <div class="flavor-card">
+                <div class="flavor-name">Strawberry Shortcake</div>
+                <div class="flavor-description">Fresh strawberries (yes, actual fresh ones), whipped cream, and shortcake crumbles on our signature light cake donut</div>
             </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-                <h2>This Week's Flavors</h2>
-                <p style="text-align: center; margin-bottom: 2rem;">Our menu changes, but these crowd favorites show up often. Call ahead to see what we've got today.</p>
-                
-                <div class="flavors-grid">
-                    <div class="flavor-card">
-                        <div class="flavor-visual"></div>
-                        <h3>Strawberry Shortcake</h3>
-                        <p>Real fresh strawberries. Not the fake stuff. Light cake donut that won't weigh you down.</p>
-                    </div>
-                    <div class="flavor-card">
-                        <div class="flavor-visual"></div>
-                        <h3>Maple Bacon</h3>
-                        <p>Sells out before we can even take photos. Sweet maple glaze, crispy bacon pieces.</p>
-                    </div>
-                    <div class="flavor-card">
-                        <div class="flavor-visual"></div>
-                        <h3>Cherry Cheesecake</h3>
-                        <p>Tangy cheesecake filling, cherry topping. Tastes like dessert for dessert.</p>
-                    </div>
-                    <div class="flavor-card">
-                        <div class="flavor-visual"></div>
-                        <h3>Boston Cream</h3>
-                        <p>Classic done right. Pastry cream that doesn't leak out when you bite it.</p>
-                    </div>
-                </div>
+            
+            <div class="flavor-card">
+                <div class="flavor-name">Cherry Cheesecake</div>
+                <div class="flavor-description">Rich cream cheese glaze with tart cherry topping and graham cracker dust</div>
             </div>
-        </section>
-
-        <section class="custom-section">
-            <div class="container">
-                <div class="custom-box">
-                    <h2>Planning Something Special?</h2>
-                    <p style="margin-bottom: 1.5rem;">Baby sprinkles, birthday parties, office treats — we'll make custom donut sets that get people talking.</p>
-                    <p style="margin-bottom: 1.5rem;">Two dozen custom donuts were a "big hit with families" at the last baby shower we did. Yours could be next.</p>
-                    <p><strong>Call (717) 698-0819 to place custom orders.</strong></p>
-                </div>
+            
+            <div class="flavor-card">
+                <div class="flavor-name">Maple Bacon</div>
+                <div class="flavor-description">Real maple glaze topped with crispy bacon pieces — sells out before we can even photograph it</div>
             </div>
-        </section>
+            
+            <div class="flavor-card">
+                <div class="flavor-name">Boston Cream</div>
+                <div class="flavor-description">Custard-filled with rich chocolate glaze that drips just right</div>
+            </div>
+            
+            <div class="flavor-card">
+                <div class="flavor-name">Peanut Butter Lovers</div>
+                <div class="flavor-description">Peanut butter glaze, crushed peanuts, and a peanut butter drizzle that's almost too much (but not quite)</div>
+            </div>
+            
+            <div class="flavor-card">
+                <div class="flavor-name">Surprise Flavor</div>
+                <div class="flavor-description">We're always experimenting — ask us what new creation we're testing this week</div>
+            </div>
+        </div>
+    </section>
 
-        <section class="hours-location">
-            <div class="container">
-                <h2 style="color: #FAF7F2; margin-bottom: 1rem;">Find Us (If We're Open)</h2>
-                <p style="text-align: center; margin-bottom: 2rem;">We're only open Thursday through Sunday. Plan accordingly.</p>
-                
-                <div class="hours-grid">
-                    <div class="hours-box">
-                        <h3 style="margin-bottom: 1rem;">Hours</h3>
-                        <div class="day-row">
-                            <span>Monday - Wednesday</span>
-                            <span class="closed">Closed</span>
-                        </div>
-                        <div class="day-row">
-                            <span>Thursday</span>
-                            <span>9am - 1pm</span>
-                        </div>
-                        <div class="day-row">
-                            <span>Friday</span>
-                            <span>7am - 1pm</span>
-                        </div>
-                        <div class="day-row">
-                            <span>Saturday</span>
-                            <span>9am - 2pm</span>
-                        </div>
-                        <div class="day-row">
-                            <span>Sunday</span>
-                            <span>9am - 12pm</span>
-                        </div>
-                    </div>
-                    
-                    <div class="location-box">
-                        <h3 style="margin-bottom: 1rem;">Location</h3>
-                        <p><strong>1185 High St<br>Hanover, PA 17331</strong></p>
-                        <p style="margin: 1rem 0;">Free parking lot on site</p>
-                        <p style="margin: 1rem 0;">Wheelchair accessible</p>
-                        <p style="margin: 1rem 0;"><strong>Phone:</strong> (717) 698-0819</p>
-                        <p>Takeout only • Credit cards accepted</p>
-                    </div>
+    <section class="section custom-orders">
+        <h2>Custom Orders for Your Special Events</h2>
+        <p>Baby sprinkles, birthday parties, office treats — we'll deck out dozens of donuts in colors and themes that match your celebration.</p>
+        <div style="text-align: center;">
+            <a href="tel:717-698-0819" class="cta-button">Call to Order Custom Sets</a>
+        </div>
+    </section>
+
+    <section id="hours" class="section hours-location">
+        <h2>Visit Us (But Only 4 Days a Week)</h2>
+        
+        <div class="hours-grid">
+            <div class="hours-card">
+                <div class="limited-days">Limited Days Open</div>
+                <h3>Hours</h3>
+                <div class="day-hours">
+                    <span>Monday - Wednesday</span>
+                    <span class="closed">CLOSED</span>
+                </div>
+                <div class="day-hours">
+                    <span>Thursday</span>
+                    <span>9am - 1pm</span>
+                </div>
+                <div class="day-hours">
+                    <span>Friday</span>
+                    <span>7am - 1pm</span>
+                </div>
+                <div class="day-hours">
+                    <span>Saturday</span>
+                    <span>9am - 2pm</span>
+                </div>
+                <div class="day-hours">
+                    <span>Sunday</span>
+                    <span>9am - 12pm</span>
                 </div>
             </div>
-        </section>
-
-        <section class="reviews-section">
-            <div class="container">
-                <h2>What People Are Saying</h2>
-                
-                <div class="review-card">
-                    <p class="review-text">"I got there 5 minutes after they opened and there was already a hefty line. These donuts are beautifully thought out — not overly sweet or obnoxious."</p>
-                    <p class="reviewer">— Local Customer</p>
-                </div>
-                
-                <div class="review-card">
-                    <p class="review-text">"The box was heavy but the donuts themselves were surprisingly light. That's unheard of for fresh strawberries on a donut!"</p>
-                    <p class="reviewer">— Donut Enthusiast</p>
-                </div>
-                
-                <div class="review-card">
-                    <p class="review-text">"I ordered 2 dozen custom donuts for a baby sprinkle. They were super cute and a big hit with families."</p>
-                    <p class="reviewer">— Event Customer</p>
-                </div>
+            
+            <div class="location-card">
+                <h3>Location & Parking</h3>
+                <p><strong>1185 High St<br>Hanover, PA 17331</strong></p>
+                <p style="margin: 1rem 0;">Free parking lot on site</p>
+                <p style="margin: 1rem 0;">Wheelchair accessible entrance</p>
+                <p style="margin: 1rem 0;"><strong>Takeout only</strong></p>
+                <p>Credit cards, debit, and contactless payments accepted</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="gallery-section">
-            <div class="container">
-                <h2>See What We're Making</h2>
-                <p style="text-align: center; margin-bottom: 2rem;">Follow us on social media for daily flavor updates and behind-the-scenes looks.</p>
-                
-                <div class="gallery-grid">
-                    <div class="gallery-item"></div>
-                    <div class="gallery-item"></div>
-                    <div class="gallery-item"></div>
-                    <div class="gallery-item"></div>
-                    <div class="gallery-item"></div>
-                    <div class="gallery-item"></div>
-                </div>
-                
-                <p style="text-align: center; margin-top: 2rem;">Found us on TikTok? You're not the first. Come see what the fuss is about.</p>
+    <section class="section reviews-section">
+        <h2>What People Are Saying</h2>
+        
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-text">"I got there 5 minutes after they opened and there was already <span class="review-highlight">a hefty line</span>. The donuts are beautifully thought out but not overly sweet."</div>
             </div>
-        </section>
-    </main>
+            
+            <div class="review-card">
+                <div class="review-text">"The strawberry shortcake donut had <span class="review-highlight">fresh strawberries — that's unheard of!</span> The box was heavy but the donuts themselves were surprisingly light."</div>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-text">"Ordered 2 dozen custom donuts for a baby sprinkle. They were <span class="review-highlight">super cute and a big hit with families.</span> Worth the special order."</div>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-text">"Found them on TikTok and had to try. The Maple Bacon was so good <span class="review-highlight">I could not wait</span> to take a photo before eating it!"</div>
+            </div>
+        </div>
+    </section>
 
-    <footer>
-        <div class="container">
-            <p><strong>Decked Out Donuts</strong></p>
-            <p>1185 High St, Hanover, PA 17331 • (717) 698-0819</p>
-            <p style="margin-top: 1rem;">Open Thursday-Sunday • Takeout Only</p>
+    <section class="section gallery-section">
+        <h2>See What We're Creating</h2>
+        <p style="margin-bottom: 2rem;">Every donut is a little work of art — follow us on social to see the latest creations</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-caption">Raspberry Glaze Perfection</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-caption">Sprinkle Mountain</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-caption">Chocolate Drip Dreams</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-caption">Custom Baby Shower Set</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-caption">Seasonal Special</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-caption">Weekend Bestseller</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Decked Out Donuts</h3>
+            <div class="contact-info">
+                <p><a href="tel:717-698-0819">(717) 698-0819</a></p>
+                <p>1185 High St, Hanover, PA 17331</p>
+                <p>Thu 9am-1pm • Fri 7am-1pm • Sat 9am-2pm • Sun 9am-12pm</p>
+            </div>
+            <p style="margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.8;">Get here early — we sell out of the good stuff fast!</p>
         </div>
     </footer>
 </body>

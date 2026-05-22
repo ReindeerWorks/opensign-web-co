@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zodiac Donuts LLC - Vegan & Gluten-Free Donuts in Hanover, PA</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=PT+Serif:wght@400;700&family=Dancing+Script:wght@600&display=swap');
         
         * {
             margin: 0;
@@ -15,9 +15,8 @@
         
         body {
             font-family: 'PT Serif', serif;
+            color: #3B2F1F;
             line-height: 1.6;
-            color: #4A3728;
-            background: #FAF7F2;
         }
         
         .container {
@@ -26,412 +25,548 @@
             padding: 0 20px;
         }
         
-        h1, h2, h3 {
-            font-family: 'Crimson Text', serif;
-            font-weight: 600;
-            line-height: 1.2;
+        /* Header */
+        .header {
+            background: #FAF7F2;
+            padding: 20px 0;
+            border-bottom: 2px solid #C4603A;
         }
         
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
         }
         
-        h2 {
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .accent {
-            font-family: 'Dancing Script', cursive;
             font-weight: 700;
-            color: #5C3D2E;
+            color: #4A3728;
         }
         
+        .nav {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .nav a {
+            color: #4A3728;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+        
+        .nav a:hover {
+            color: #C4603A;
+        }
+        
+        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #C4603A 0%, #F5ECD7 100%);
+            background: linear-gradient(135deg, #F5ECD7 0%, #FAF7F2 100%);
             padding: 80px 0;
             text-align: center;
-            color: #FAF7F2;
         }
         
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #4A3728;
+            margin-bottom: 20px;
         }
         
-        .hero .tagline {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            font-style: italic;
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: #5C3D2E;
+            margin-bottom: 30px;
         }
         
         .cta-button {
             display: inline-block;
-            background: #5C3D2E;
+            background: #C4603A;
             color: #FAF7F2;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 1.125rem;
+            padding: 15px 35px;
+            font-size: 1.1rem;
             font-weight: 700;
+            text-decoration: none;
+            border-radius: 5px;
             transition: background 0.3s ease;
         }
         
         .cta-button:hover {
-            background: #4A3728;
+            background: #B85C38;
         }
         
-        .section {
+        /* What Makes Us Different */
+        .different-section {
+            background: #7A8C6E;
+            color: #FAF7F2;
             padding: 80px 0;
         }
         
-        .gradient-bg {
-            background: linear-gradient(45deg, #7A8C6E 0%, #F5ECD7 100%);
-            color: #FAF7F2;
-        }
-        
-        .gradient-bg h2,
-        .gradient-bg h3 {
-            color: #FAF7F2;
-        }
-        
-        .what-makes-different {
+        .different-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
             text-align: center;
+            margin-bottom: 50px;
         }
         
-        .features-grid {
+        .different-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 40px;
-            margin-top: 40px;
+            margin-bottom: 40px;
         }
         
-        .feature {
+        .different-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #FAF7F2;
+        }
+        
+        .different-item p {
+            font-size: 1.1rem;
+            color: #FAF7F2;
+        }
+        
+        /* Seasonal Specials */
+        .specials-section {
+            background: linear-gradient(135deg, #C4603A 0%, #B85C38 100%);
+            color: #FAF7F2;
+            padding: 80px 0;
+        }
+        
+        .specials-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
             text-align: center;
+            margin-bottom: 20px;
         }
         
-        .feature h3 {
-            color: #C4603A;
-            margin-bottom: 1rem;
+        .accent-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #FAF7F2;
         }
         
-        .specials {
-            background: linear-gradient(135deg, #F5ECD7 0%, #C4603A 100%);
-            color: #5C3D2E;
+        .specials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
         
         .special-item {
-            background: rgba(250, 247, 242, 0.9);
+            background: rgba(250, 247, 242, 0.1);
             padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            border-left: 4px solid #7A8C6E;
+            border-radius: 10px;
         }
         
         .special-item h3 {
-            color: #C4603A;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #FAF7F2;
+        }
+        
+        .special-item p {
+            color: #FAF7F2;
+            font-size: 1.1rem;
+        }
+        
+        /* Menu Section */
+        .menu-section {
+            background: #FAF7F2;
+            padding: 80px 0;
+        }
+        
+        .menu-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #4A3728;
         }
         
         .menu-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin-top: 40px;
         }
         
         .menu-item {
-            border: 2px solid #F5ECD7;
-            border-radius: 12px;
+            background: white;
             padding: 25px;
-            background: #FEFCF9;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(196, 96, 58, 0.1);
         }
         
         .menu-item h3 {
-            color: #C4603A;
-            margin-bottom: 0.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #4A3728;
+        }
+        
+        .menu-item p {
+            color: #5C3D2E;
+            margin-bottom: 10px;
         }
         
         .price {
-            color: #7A8C6E;
             font-weight: 700;
-            font-size: 1.125rem;
+            color: #C4603A;
         }
         
+        /* How It Works */
         .how-it-works {
-            background: #F5ECD7;
+            background: #5C3D2E;
+            color: #FAF7F2;
+            padding: 80px 0;
         }
         
-        .steps {
+        .how-it-works h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .steps-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
         }
         
         .step {
             text-align: center;
-            padding: 20px;
         }
         
         .step-number {
-            background: #C4603A;
-            color: #FAF7F2;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
             font-weight: 700;
-            margin: 0 auto 20px;
-        }
-        
-        .about {
-            text-align: center;
-        }
-        
-        .testimonials {
-            background: linear-gradient(45deg, #6B7F5E 0%, #F5ECD7 100%);
-            color: #FAF7F2;
-        }
-        
-        .testimonial {
-            background: rgba(250, 247, 242, 0.1);
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            border-left: 4px solid #C4603A;
-        }
-        
-        .testimonial-text {
-            font-size: 1.125rem;
-            font-style: italic;
+            color: #C4603A;
             margin-bottom: 20px;
         }
         
-        .testimonial-author {
+        .step h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        /* Reviews */
+        .reviews-section {
+            background: linear-gradient(135deg, #F5ECD7 0%, #FAF7F2 100%);
+            padding: 80px 0;
+        }
+        
+        .reviews-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #4A3728;
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .review {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(122, 140, 110, 0.1);
+        }
+        
+        .review-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #4A3728;
+            font-size: 1.1rem;
+        }
+        
+        .reviewer {
             font-weight: 700;
             color: #C4603A;
         }
         
-        .contact {
-            background: #5C3D2E;
+        /* About Section */
+        .about-section {
+            background: #6B7F5E;
             color: #FAF7F2;
+            padding: 80px 0;
+        }
+        
+        .about-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
         }
         
-        .contact h2 {
+        .about-content p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        /* Contact Info */
+        .contact-section {
+            background: #4A3728;
             color: #FAF7F2;
+            padding: 60px 0;
         }
         
-        .contact-info {
-            font-size: 1.125rem;
-            margin: 20px 0;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
         }
         
-        .website {
-            color: #F5ECD7;
-            text-decoration: none;
-            font-weight: 700;
-        }
-        
-        .website:hover {
+        .contact-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
             color: #C4603A;
         }
         
-        @media (min-width: 768px) {
-            .features-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .menu-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .steps {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .hero h1 {
-                font-size: 4rem;
-            }
+        .contact-item p {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
         }
         
-        @media (min-width: 1024px) {
-            .menu-grid {
-                grid-template-columns: repeat(3, 1fr);
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav {
+                gap: 20px;
+            }
+            
+            .different-grid,
+            .specials-grid,
+            .menu-grid,
+            .steps-grid,
+            .reviews-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Zodiac Donuts LLC</div>
+                <nav class="nav">
+                    <a href="#menu">Menu</a>
+                    <a href="#order">Order</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
     <section class="hero">
         <div class="container">
-            <h1>Zodiac Donuts</h1>
-            <p class="tagline">Vegan & gluten-free donuts that taste like magic</p>
-            <a href="https://zodiacdonutsllc.com" class="cta-button">Order Online</a>
+            <h1>Vegan Donuts That Actually Taste Like Heaven</h1>
+            <p class="subtitle">Fresh-baked daily in Hanover, PA. No dairy, eggs, or compromises on flavor.</p>
+            <a href="#order" class="cta-button">Order Online Now</a>
         </div>
     </section>
 
-    <section class="section what-makes-different">
+    <section class="different-section">
         <div class="container">
             <h2>What Makes Us Different</h2>
-            <p>We believe everyone deserves incredible donuts. That's why we've perfected vegan recipes that taste better than conventional ones, plus gluten-free options for those who need them.</p>
-            
-            <div class="features-grid">
-                <div class="feature">
+            <div class="different-grid">
+                <div class="different-item">
                     <h3>100% Vegan</h3>
-                    <p>Every single donut is plant-based. No dairy, no eggs, no compromise on flavor.</p>
+                    <p>Every single donut is made without dairy or eggs. We've perfected our recipes so they taste just as rich and satisfying as traditional donuts — sometimes better.</p>
                 </div>
-                <div class="feature">
+                <div class="different-item">
                     <h3>Gluten-Free Options</h3>
-                    <p>We rotate gluten-free donuts and cookies because dietary restrictions shouldn't mean missing out.</p>
+                    <p>When you have multiple dietary restrictions, finding good baked goods feels impossible. Our gluten-free donuts and cookies fill that gap without sacrificing taste.</p>
                 </div>
-                <div class="feature">
-                    <h3>Allergy-Friendly</h3>
-                    <p>Safe for multiple dietary restrictions. We're a lifesaver for households juggling gluten, dairy, and egg allergies.</p>
+                <div class="different-item">
+                    <h3>Allergy-Friendly Kitchen</h3>
+                    <p>We understand cross-contamination concerns. Our kitchen is set up to accommodate customers with gluten, dairy, and egg restrictions safely.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section specials gradient-bg">
+    <section class="specials-section">
         <div class="container">
-            <h2>Current <span class="accent">Seasonal Specials</span></h2>
-            
-            <div class="special-item">
-                <h3>Lavender Vanilla Cream</h3>
-                <p>Our signature donut that customers call the best lavender-flavored anything they've ever had. Light lavender vanilla cream filling inside a perfectly powdered donut.</p>
-            </div>
-            
-            <div class="special-item">
-                <h3>Apple Fritters</h3>
-                <p>The crowd-pleaser that wins over skeptics. Even 8-year-olds declare these better than regular fritters.</p>
-            </div>
-            
-            <div class="special-item">
-                <h3>Blueberry Lemon Fritter</h3>
-                <p>Limited special that hits all the mouth feels. Fresh blueberries with bright lemon glaze for the perfect balance.</p>
+            <h2>Seasonal Specials</h2>
+            <p class="accent-text">Limited-time flavors that sell out fast</p>
+            <div class="specials-grid">
+                <div class="special-item">
+                    <h3>Lavender Vanilla Cream</h3>
+                    <p>Light lavender vanilla cream filling inside a perfectly powdered donut. Our signature flavor that customers drive from neighboring towns to try.</p>
+                </div>
+                <div class="special-item">
+                    <h3>Blueberry Lemon Fritter</h3>
+                    <p>Fresh blueberries and bright lemon glaze in our hand-twisted fritter. It hits all the mouth feels — tart, sweet, and satisfying.</p>
+                </div>
+                <div class="special-item">
+                    <h3>Apple Fritters</h3>
+                    <p>Even 8-year-olds declare these better than regular fritters. Chunks of real apple in our signature dough, finished with cinnamon sugar.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="section menu">
+    <section class="menu-section" id="menu">
         <div class="container">
-            <h2>Our Menu</h2>
-            <p>All donuts are vegan. Gluten-free options rotate weekly.</p>
-            
+            <h2>Full Menu</h2>
             <div class="menu-grid">
                 <div class="menu-item">
                     <h3>Classic Glazed</h3>
-                    <p>The perfect starter donut. Light, fluffy, with our signature glaze.</p>
-                    <span class="price">$3</span>
+                    <p>Our signature vegan yeast donut with traditional glaze</p>
+                    <div class="price">$3</div>
                 </div>
-                
                 <div class="menu-item">
                     <h3>Chocolate Frosted</h3>
-                    <p>Rich chocolate frosting on our classic base. Simple perfection.</p>
-                    <span class="price">$3.50</span>
+                    <p>Rich chocolate frosting on our fluffy vegan base</p>
+                    <div class="price">$3.50</div>
                 </div>
-                
                 <div class="menu-item">
                     <h3>Boston Cream</h3>
-                    <p>Vanilla cream filling with chocolate ganache. The classic done right.</p>
-                    <span class="price">$4</span>
+                    <p>Vanilla cream filling with chocolate glaze</p>
+                    <div class="price">$4</div>
                 </div>
-                
                 <div class="menu-item">
-                    <h3>Cinnamon Sugar</h3>
-                    <p>Rolled in cinnamon sugar while still warm. Comfort in donut form.</p>
-                    <span class="price">$3</span>
+                    <h3>Old Fashioned</h3>
+                    <p>Classic cake donut with cinnamon sugar coating</p>
+                    <div class="price">$3.50</div>
                 </div>
-                
                 <div class="menu-item">
                     <h3>GF Pumpkin Donuts</h3>
-                    <p>Seasonal gluten-free favorite with warm spices and pumpkin glaze.</p>
-                    <span class="price">$4.50</span>
+                    <p>Gluten-free pumpkin spice with cream cheese glaze</p>
+                    <div class="price">$4.50</div>
                 </div>
-                
                 <div class="menu-item">
                     <h3>GF Chocolate Chip Cookies</h3>
-                    <p>Chewy gluten-free cookies that taste better than the original.</p>
-                    <span class="price">$5 for 3</span>
+                    <p>Soft-baked gluten-free cookies, dairy and egg-free</p>
+                    <div class="price">$2.50</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section how-it-works">
+    <section class="how-it-works" id="order">
         <div class="container">
             <h2>How It Works</h2>
-            <p>We're a virtual bakery, which means fresh donuts made to order without the overhead of a storefront.</p>
-            
-            <div class="steps">
+            <div class="steps-grid">
                 <div class="step">
                     <div class="step-number">1</div>
                     <h3>Order Online</h3>
-                    <p>Browse our menu and place your order through our website.</p>
+                    <p>Visit zodiacdonutsllc.com to place your order. We're a virtual bakery — no storefront visits needed.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3>We Bake Fresh</h3>
-                    <p>Your donuts are made to order in small batches for maximum freshness.</p>
+                    <h3>Choose Pickup Method</h3>
+                    <p>Select from curbside pickup, regular pickup, or delivery to your location in the Hanover area.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Pick Up or Delivery</h3>
-                    <p>Choose curbside pickup, takeout, or delivery. We make it easy.</p>
+                    <h3>Enjoy Fresh Donuts</h3>
+                    <p>Pick up your order fresh from our kitchen. We accept credit and debit cards for easy payment.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section about">
+    <section class="reviews-section">
         <div class="container">
-            <h2>About <span class="accent">Zodiac Donuts</span></h2>
-            <p>We started Zodiac Donuts because we believe dietary restrictions shouldn't mean settling for less. Every recipe is crafted to prove that vegan and gluten-free can taste better than conventional baking.</p>
-            <p>Our small-batch approach means we can experiment with seasonal flavors like lavender vanilla cream and blueberry lemon fritters. We're not just making donuts — we're making sure everyone has a seat at the dessert table.</p>
-        </div>
-    </section>
-
-    <section class="section testimonials">
-        <div class="container">
-            <h2>What People Say</h2>
-            
-            <div class="testimonial">
-                <p class="testimonial-text">"The lavender vanilla cream is BY FAR HANDS DOWN the best lavender flavored anything I have ever had in my life. The light lavender vanilla cream filling inside a powdered donut is perfection."</p>
-                <p class="testimonial-author">- Sarah M.</p>
-            </div>
-            
-            <div class="testimonial">
-                <p class="testimonial-text">"My 8-year-old declared these apple fritters better than regular non-vegan fritters. That's saying something coming from a kid who usually complains about healthy alternatives."</p>
-                <p class="testimonial-author">- Mike T.</p>
-            </div>
-            
-            <div class="testimonial">
-                <p class="testimonial-text">"Zodiac is a lifesaver for our household with gluten, dairy, and egg restrictions. The GF pumpkin donuts and chocolate chip cookies are favorites that actually taste amazing."</p>
-                <p class="testimonial-author">- Jennifer L.</p>
+            <h2>What People Are Saying</h2>
+            <div class="reviews-grid">
+                <div class="review">
+                    <p class="review-text">"BY FAR HANDS DOWN BEST lavender flavored anything I have ever had in my life. The lavender vanilla cream filling is perfection."</p>
+                    <div class="reviewer">— Sarah M.</div>
+                </div>
+                <div class="review">
+                    <p class="review-text">"My 8-year-old said these apple fritters are better than regular ones. I have to agree — they're incredible."</p>
+                    <div class="reviewer">— Mike T.</div>
+                </div>
+                <div class="review">
+                    <p class="review-text">"As someone with gluten, dairy, AND egg restrictions, Zodiac is a lifesaver. The GF pumpkin donuts are my favorite."</p>
+                    <div class="reviewer">— Jennifer L.</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="section contact">
+    <section class="about-section" id="about">
         <div class="container">
-            <h2>Visit Us</h2>
-            <div class="contact-info">
-                <p>72 Cody Ct, Hanover, PA 17331</p>
-                <p>Virtual bakery - pickup and delivery only</p>
-                <p>Wheelchair-accessible parking available</p>
+            <h2>Our Story</h2>
+            <div class="about-content">
+                <p>We started Zodiac Donuts because we believed everyone deserves amazing baked goods, regardless of dietary restrictions.</p>
+                <p>Too many people with allergies or dietary choices have to settle for "good enough" desserts. We spent months perfecting our recipes until our vegan and gluten-free options tasted just as indulgent as traditional versions.</p>
+                <p>Every batch is made fresh in small quantities. We rotate seasonal flavors to keep things exciting and source quality ingredients because shortcuts show up in the final product.</p>
+                <p>Our virtual bakery model lets us focus entirely on the baking while keeping costs reasonable for our customers.</p>
             </div>
-            <p>Order online: <a href="https://zodiacdonutsllc.com" class="website">zodiacdonutsllc.com</a></p>
-            <p>We accept all credit and debit cards</p>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h3>Location</h3>
+                    <p>72 Cody Ct<br>Hanover, PA 17331</p>
+                    <p>Virtual bakery with pickup available<br>Wheelchair-accessible parking</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Order Online</h3>
+                    <p>zodiacdonutsllc.com</p>
+                    <p>Credit and debit cards accepted</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Service Options</h3>
+                    <p>• Curbside pickup<br>• Regular pickup<br>• Local delivery</p>
+                </div>
+            </div>
         </div>
     </section>
 </body>

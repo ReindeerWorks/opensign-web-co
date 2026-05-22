@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aldus Brewing Co. | Dolphin & Anchor Brew Pub | Hanover, PA</title>
+    <title>Aldus Brewing Co. Dolphin & Anchor Brew Pub - Hanover's Center Square</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Serif+Pro:wght@400;600&family=Dancing+Script:wght@600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Serif+Pro:wght@300;400;600&family=Dancing+Script:wght@400&display=swap');
         
         * {
             margin: 0;
@@ -16,8 +16,7 @@
         body {
             font-family: 'Source Serif Pro', serif;
             line-height: 1.6;
-            color: #4A3728;
-            background-color: #FAF7F2;
+            color: #3B2F1F;
         }
         
         .container {
@@ -26,47 +25,64 @@
             padding: 0 20px;
         }
         
+        /* Header */
         header {
-            background: linear-gradient(135deg, #1a2332 0%, #2d3748 50%, #C4603A 100%);
-            color: #FAF7F2;
-            padding: 60px 0 80px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        header::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            right: 0;
-            height: 30px;
-            background: #FAF7F2;
-            transform: skewY(-1deg);
+            background: #4A3728;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         .header-content {
-            position: relative;
-            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
         }
         
-        h1 {
+        .logo {
+            color: #FAF7F2;
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 15px;
+            text-decoration: none;
         }
         
-        .subtitle {
+        .contact-header {
+            color: #FAF7F2;
+            font-size: 0.9rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #7A8C6E 0%, #6B7F5E 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #FAF7F2;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        
+        .hero .subtitle {
             font-size: 1.3rem;
+            color: #FAF7F2;
             margin-bottom: 30px;
-            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .hero-text {
+        .hero-description {
             font-size: 1.1rem;
-            max-width: 600px;
-            margin-bottom: 40px;
+            color: #FAF7F2;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
         }
         
         .cta-button {
@@ -76,6 +92,7 @@
             text-decoration: none;
             border-radius: 5px;
             font-weight: 600;
+            font-size: 1.1rem;
             display: inline-block;
             transition: background 0.3s ease;
         }
@@ -84,134 +101,168 @@
             background: #B85C38;
         }
         
-        .section {
+        /* Section Styles */
+        section {
             padding: 60px 0;
         }
         
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
             color: #4A3728;
         }
         
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #5C3D2E;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Tap List Section */
         .tap-list {
-            background: linear-gradient(135deg, #F5ECD7 0%, #FAF7F2 100%);
+            background: #F5ECD7;
         }
         
         .beer-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        
-        .beer-item {
-            background: rgba(255, 255, 255, 0.5);
-            padding: 25px;
-            border-radius: 8px;
-            border-left: 4px solid #C4603A;
-        }
-        
-        .beer-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            color: #4A3728;
-            margin-bottom: 8px;
-        }
-        
-        .beer-style {
-            font-weight: 600;
-            color: #C4603A;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-        
-        .signature-badge {
-            background: #C4603A;
-            color: #FAF7F2;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-        
-        .food-explainer {
-            background: #7A8C6E;
-            color: #FAF7F2;
-            position: relative;
-        }
-        
-        .food-steps {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
-            margin-top: 30px;
-        }
-        
-        .step {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 8px;
-        }
-        
-        .step-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: #F5ECD7;
-            margin-bottom: 10px;
-        }
-        
-        .about {
-            background: linear-gradient(135deg, #FAF7F2 0%, #F5ECD7 100%);
-        }
-        
-        .atmosphere-grid {
-            display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
         
-        .atmosphere-item {
+        .beer-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .beer-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #4A3728;
+            margin-bottom: 10px;
+        }
+        
+        .beer-style {
+            color: #C4603A;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .featured-beer {
+            border: 3px solid #C4603A;
+            position: relative;
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #C4603A;
+            color: #FAF7F2;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* Food Section */
+        .food-info {
+            background: linear-gradient(135deg, #C4603A 0%, #B85C38 100%);
+            color: #FAF7F2;
+        }
+        
+        .food-info .section-title,
+        .food-info .section-subtitle {
+            color: #FAF7F2;
+        }
+        
+        .food-process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .process-step {
             text-align: center;
             padding: 20px;
         }
         
-        .atmosphere-icon {
-            width: 60px;
-            height: 60px;
-            background: #C4603A;
+        .step-number {
+            background: rgba(250, 247, 242, 0.2);
+            color: #FAF7F2;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            margin: 0 auto 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #FAF7F2;
             font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px auto;
         }
         
-        .location-hours {
-            background: #4A3728;
+        /* About Section */
+        .about {
+            background: #FAF7F2;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        
+        .about-content p {
+            margin-bottom: 25px;
+        }
+        
+        .signature-script {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #C4603A;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        /* Hours & Location */
+        .hours-location {
+            background: linear-gradient(135deg, #7A8C6E 0%, #6B7F5E 100%);
+            color: #FAF7F2;
+        }
+        
+        .hours-location .section-title,
+        .hours-location .section-subtitle {
             color: #FAF7F2;
         }
         
         .info-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
         
-        .info-block h3 {
+        .info-card {
+            background: rgba(250, 247, 242, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .info-card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #F5ECD7;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #FAF7F2;
         }
         
         .hours-list {
@@ -219,63 +270,95 @@
         }
         
         .hours-list li {
-            padding: 5px 0;
-            border-bottom: 1px solid rgba(245, 236, 215, 0.2);
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(250, 247, 242, 0.2);
         }
         
-        .day {
-            font-weight: 600;
-            display: inline-block;
-            width: 90px;
+        /* Events Section */
+        .events {
+            background: #F5ECD7;
         }
         
-        .retail {
-            background: linear-gradient(135deg, #C4603A 0%, #B85C38 100%);
-            color: #FAF7F2;
+        .events-content {
             text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
-        .handwritten {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.8rem;
-            color: #4A3728;
-            margin-bottom: 20px;
-        }
-        
-        footer {
+        /* Retail Section */
+        .retail {
             background: #4A3728;
             color: #FAF7F2;
-            padding: 40px 0;
+        }
+        
+        .retail .section-title,
+        .retail .section-subtitle {
+            color: #FAF7F2;
+        }
+        
+        .retail-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #3B2F1F;
+            color: #FAF7F2;
+            padding: 40px 0 20px 0;
             text-align: center;
         }
         
-        .footer-info {
+        .footer-content {
+            margin-bottom: 30px;
+        }
+        
+        .footer-contact {
             margin-bottom: 20px;
         }
         
-        .footer-info p {
-            margin-bottom: 5px;
+        .footer-contact p {
+            margin-bottom: 8px;
         }
         
-        @media (min-width: 768px) {
-            h1 {
-                font-size: 3.5rem;
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
             }
             
             .beer-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
             }
             
-            .food-steps {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .atmosphere-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .food-process {
+                grid-template-columns: 1fr;
             }
             
             .info-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -284,138 +367,173 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <h1>Aldus Brewing Co.</h1>
-                <div class="subtitle">Dolphin & Anchor Brew Pub</div>
-                <p class="hero-text">Your neighborhood taproom on Hanover's Center Square. We pour house-made beers in a space that feels more like your living room than a rowdy bar. Smooth jazz, booth games, and genuinely good beer.</p>
-                <a href="#tap-list" class="cta-button">See What's On Tap</a>
+                <a href="#" class="logo">Dolphin & Anchor</a>
+                <div class="contact-header">
+                    13 Center Square, Hanover, PA | (717) 634-5575
+                </div>
             </div>
         </div>
     </header>
 
-    <section id="tap-list" class="section tap-list">
+    <section class="hero">
         <div class="container">
-            <h2 class="section-title">Current Tap List</h2>
-            <div class="beer-grid">
-                <div class="beer-item">
-                    <div class="signature-badge">House Favorite</div>
-                    <div class="beer-name">Red Flannel Lager</div>
-                    <div class="beer-style">Red Lager</div>
-                    <p>Our signature brew that keeps folks coming back. Smooth, malty, and perfect for sipping while you tackle one of our table puzzles.</p>
-                </div>
-                <div class="beer-item">
-                    <div class="beer-name">Center Square IPA</div>
-                    <div class="beer-style">American IPA</div>
-                    <p>Hoppy but balanced. Named after our front door view. Pairs well with conversation and games.</p>
-                </div>
-                <div class="beer-item">
-                    <div class="beer-name">Anchor Porter</div>
-                    <div class="beer-style">Robust Porter</div>
-                    <p>Rich, dark, and warming. The kind of beer that makes you settle in for the long haul.</p>
-                </div>
-                <div class="beer-item">
-                    <div class="beer-name">Dolphin Wheat</div>
-                    <div class="beer-style">American Wheat</div>
-                    <p>Light and easy-drinking. Our answer to those who want something refreshing without the hop bite.</p>
-                </div>
-            </div>
-            <p><strong>Wine and cocktails also available.</strong> Ask your server for current selections.</p>
+            <h1>Your Neighborhood Taproom</h1>
+            <p class="subtitle">House-made beers, calm atmosphere, right on Center Square</p>
+            <p class="hero-description">We brew thoughtful beers for thoughtful people. No rushing, no shouting over TVs. Just smooth jazz, booth games, and conversation that flows as well as our taps. Come settle in — Hanover's town square has been waiting for you.</p>
+            <a href="#hours" class="cta-button">Plan Your Visit</a>
         </div>
     </section>
 
-    <section class="section food-explainer">
+    <section class="tap-list">
+        <div class="container">
+            <h2 class="section-title">On Tap Now</h2>
+            <p class="section-subtitle">Fresh from our brewery, rotating selections that keep things interesting</p>
+            
+            <div class="beer-grid">
+                <div class="beer-card featured-beer">
+                    <div class="featured-badge">Local Favorite</div>
+                    <h3 class="beer-name">Red Flannel Lager</h3>
+                    <p class="beer-style">Red Lager • 5.2% ABV</p>
+                    <p>Our signature brew. Malty sweetness meets crisp finish. So good, people buy six-packs to take home. This one put us on the map for good reason.</p>
+                </div>
+                
+                <div class="beer-card">
+                    <h3 class="beer-name">Harbor Haze IPA</h3>
+                    <p class="beer-style">New England IPA • 6.8% ABV</p>
+                    <p>Juicy and smooth without the bite. Citrus forward with just enough hops to remind you it's an IPA. Perfect for IPA lovers and converts alike.</p>
+                </div>
+                
+                <div class="beer-card">
+                    <h3 class="beer-name">Anchor Wheat</h3>
+                    <p class="beer-style">American Wheat • 4.9% ABV</p>
+                    <p>Light, refreshing, goes with everything. Whether you're here for one beer or staying all evening, this wheat won't weigh you down.</p>
+                </div>
+                
+                <div class="beer-card">
+                    <h3 class="beer-name">Square Stout</h3>
+                    <p class="beer-style">Coffee Stout • 6.1% ABV</p>
+                    <p>Rich coffee notes meet chocolate undertones. Named after our address, tastes like home. Especially good on quiet Tuesday evenings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="food-info">
         <div class="container">
             <h2 class="section-title">How Food Works Here</h2>
-            <p>We focus on brewing great beer. For food, we partner with Hotel Hanover next door. It's simple once you know how.</p>
+            <p class="section-subtitle">We brew the beer, Hotel Hanover next door handles the kitchen. Here's how it works.</p>
             
-            <div class="food-steps">
-                <div class="step">
+            <div class="food-process">
+                <div class="process-step">
                     <div class="step-number">1</div>
-                    <h3>Scan the QR code at your table</h3>
-                    <p>Every table has a code that connects you to Hotel Hanover's kitchen menu.</p>
+                    <h3>Scan the QR Code</h3>
+                    <p>Every table has a QR code that connects you directly to Hotel Hanover's menu. No walking, no waiting in line.</p>
                 </div>
-                <div class="step">
+                
+                <div class="process-step">
                     <div class="step-number">2</div>
-                    <h3>Order what looks good</h3>
-                    <p>The tuna wontons are excellent. Skip the loaded tots unless you're really hungry.</p>
+                    <h3>Order From Your Phone</h3>
+                    <p>Browse their full menu right from your table. Tuna wontons are a standout. Place your order when you're ready.</p>
                 </div>
-                <div class="step">
+                
+                <div class="process-step">
                     <div class="step-number">3</div>
-                    <h3>Food comes to you</h3>
-                    <p>Hotel Hanover delivers right to your table. You stay put, keep drinking, keep playing.</p>
+                    <h3>Food Comes to You</h3>
+                    <p>Hotel Hanover delivers directly to your table. You stay put, keep drinking our beer, keep enjoying the atmosphere.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section about">
+    <section class="about">
         <div class="container">
-            <h2 class="section-title">Why We're Different</h2>
-            <p>Most brewpubs are loud. Ours isn't. We keep the volume low, put smooth jazz on the speakers, and give you space to actually talk to whoever you came with.</p>
+            <h2 class="section-title">Why We're Here</h2>
             
-            <div class="atmosphere-grid">
-                <div class="atmosphere-item">
-                    <div class="atmosphere-icon">🎲</div>
-                    <h3>Games at Every Table</h3>
-                    <p>Puzzles, cards, and booth games. Because sometimes the best conversations happen over something to do with your hands.</p>
-                </div>
-                <div class="atmosphere-item">
-                    <div class="atmosphere-icon">🎵</div>
-                    <h3>Jazz, Not Sports</h3>
-                    <p>We'll change the TV if you ask, but we're not a sports bar. Think neighborhood living room with better beer.</p>
-                </div>
-                <div class="atmosphere-item">
-                    <div class="atmosphere-icon">🍺</div>
-                    <h3>Staff Who Actually Care</h3>
-                    <p>Our team gives real beer recommendations and seems genuinely pleased to help. It makes a difference.</p>
-                </div>
+            <div class="about-content">
+                <p>Most brewpubs are loud. We're not. Most taprooms rush you through. We don't. We opened Dolphin & Anchor because Hanover's Center Square deserved a place where you could actually hear each other talk.</p>
+                
+                <p>You'll find booth games, table puzzles, and staff who remember what you drank last time. The jazz stays smooth, the volume stays low, and the beer stays fresh. We're not trying to be everything to everyone. We're trying to be exactly what you need when you want to slow down.</p>
+                
+                <p>Our brewing happens right here. Every beer starts in our system and ends in your glass. No shortcuts, no compromises. Just the kind of thoughtful brewing that pairs well with thoughtful conversation.</p>
+                
+                <div class="signature-script">Welcome to your living room downtown</div>
             </div>
         </div>
     </section>
 
-    <section class="section location-hours">
+    <section class="hours-location" id="hours">
         <div class="container">
-            <h2 class="section-title">Find Us on Center Square</h2>
-            <p>We're right in the heart of walkable downtown Hanover. Street parking available, and we're wheelchair accessible throughout.</p>
+            <h2 class="section-title">Find Us on the Square</h2>
+            <p class="section-subtitle">Right in the heart of walkable downtown Hanover</p>
             
             <div class="info-grid">
-                <div class="info-block">
-                    <h3>Location & Contact</h3>
-                    <p>13 Center Square<br>
-                    Hanover, PA 17331</p>
-                    <p><strong>Phone:</strong> (717) 634-5575</p>
-                    <p><strong>Website:</strong> aldusbrewing.com</p>
-                </div>
-                <div class="info-block">
+                <div class="info-card">
                     <h3>Hours</h3>
                     <ul class="hours-list">
-                        <li><span class="day">Monday:</span> Closed</li>
-                        <li><span class="day">Tue-Thu:</span> 3-10pm</li>
-                        <li><span class="day">Friday:</span> 3pm-12am</li>
-                        <li><span class="day">Saturday:</span> 12pm-12am</li>
-                        <li><span class="day">Sunday:</span> 12-8pm</li>
+                        <li><span>Monday</span><span>Closed</span></li>
+                        <li><span>Tuesday</span><span>3:00 PM - 10:00 PM</span></li>
+                        <li><span>Wednesday</span><span>3:00 PM - 10:00 PM</span></li>
+                        <li><span>Thursday</span><span>3:00 PM - 10:00 PM</span></li>
+                        <li><span>Friday</span><span>3:00 PM - 12:00 AM</span></li>
+                        <li><span>Saturday</span><span>12:00 PM - 12:00 AM</span></li>
+                        <li><span>Sunday</span><span>12:00 PM - 8:00 PM</span></li>
                     </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3>Location & Contact</h3>
+                    <p><strong>13 Center Square<br>Hanover, PA 17331</strong></p>
+                    <p><strong>Phone:</strong> (717) 634-5575</p>
+                    <p><strong>Parking:</strong> Free and paid street parking available</p>
+                    <p><strong>Accessibility:</strong> Wheelchair-accessible entrance, seating, and restroom</p>
+                    <p><strong>Payment:</strong> Credit cards, debit cards, NFC payments accepted</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section retail">
+    <section class="events">
         <div class="container">
-            <div class="handwritten">Take some home</div>
-            <h2 class="section-title">Six-Packs to Go</h2>
-            <p>Love the Red Flannel? Grab a six-pack on your way out. We package our house favorites for home enjoyment.</p>
-            <p><strong>Ask your server about current availability.</strong></p>
+            <h2 class="section-title">Events & Live Music</h2>
+            
+            <div class="events-content">
+                <p>We're working on bringing live music and special events to the taproom. Check back soon for our calendar, or follow us online for updates. When we do host events, they'll match our atmosphere — intimate, acoustic, conversation-friendly.</p>
+                
+                <p>Interested in hosting a private group? Give us a call. Our split seating areas work well for parties that want to spread out without taking over the whole place.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="retail">
+        <div class="container">
+            <h2 class="section-title">Take It Home</h2>
+            <p class="section-subtitle">Can't get enough of our Red Flannel? We get it.</p>
+            
+            <div class="retail-content">
+                <p>Six-packs and individual cans available for takeout. Perfect for continuing the conversation at home, or bringing a taste of the square to friends who haven't made it in yet.</p>
+                
+                <p>Ask your server what's available to go. Selection varies based on what's currently on tap and what we've got canned fresh.</p>
+                
+                <a href="tel:717-634-5575" class="cta-button">Call About Availability</a>
+            </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <div class="footer-info">
-                <p><strong>Aldus Brewing Co. | Dolphin & Anchor Brew Pub</strong></p>
-                <p>13 Center Square, Hanover, PA 17331 | (717) 634-5575</p>
-                <p>Dine-in only | Credit cards, debit cards, NFC payments accepted</p>
+            <div class="footer-content">
+                <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 20px;">Aldus Brewing Co. Dolphin & Anchor Brew Pub</h3>
+                
+                <div class="footer-contact">
+                    <p>13 Center Square, Hanover, PA 17331</p>
+                    <p>(717) 634-5575</p>
+                    <p>aldusbrewing.com</p>
+                </div>
+                
+                <p>Closed Mondays | Tue-Thu 3-10pm | Fri 3pm-12am | Sat 12pm-12am | Sun 12-8pm</p>
             </div>
-            <p>&copy; 2025 Aldus Brewing Co. Come as you are, drink what you like.</p>
+            
+            <p style="font-size: 0.9rem; opacity: 0.8;">&copy; 2025 Aldus Brewing Co. Your neighborhood taproom on the square.</p>
         </div>
     </footer>
 </body>
