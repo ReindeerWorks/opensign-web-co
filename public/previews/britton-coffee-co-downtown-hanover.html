@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Britton Coffee Co - Downtown Hanover</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PT Serif', serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #4A3728;
+            background-color: #F5ECD7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #5C3D2E;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #5C3D2E;
+        }
+
+        .accent-text {
+            font-family: 'Dancing Script', cursive;
+            font-weight: 600;
+            font-size: 1.8rem;
+            color: #4A3728;
+        }
+
+        /* Header */
+        header {
+            background-color: #5C3D2E;
+            color: #FAF7F2;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #FAF7F2;
+            text-decoration: none;
+        }
+
+        .hours {
+            font-size: 0.9rem;
+            text-align: right;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #C4603A 0%, #B85C38 50%, #5C3D2E 100%);
+            color: #FAF7F2;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            color: #FAF7F2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #FAF7F2;
+            color: #5C3D2E;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-alt {
+            background-color: #FAF7F2;
+        }
+
+        .gradient-accent {
+            background: linear-gradient(135deg, #F5ECD7 0%, #C4603A 100%);
+            padding: 3rem 0;
+            margin: 3rem 0;
+        }
+
+        .gradient-accent h2,
+        .gradient-accent p {
+            color: #FAF7F2;
+        }
+
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .menu-item {
+            background-color: #FAF7F2;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #C4603A;
+        }
+
+        .menu-item h3 {
+            color: #5C3D2E;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item p {
+            color: #4A3728;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            font-weight: 700;
+            color: #B85C38;
+        }
+
+        /* Info Cards */
+        .info-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background-color: #5C3D2E;
+            color: #FAF7F2;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .info-card h3 {
+            color: #FAF7F2;
+            margin-bottom: 1rem;
+        }
+
+        /* Location Section */
+        .location-info {
+            background-color: #F5ECD7;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .location-info h3 {
+            margin-bottom: 1rem;
+        }
+
+        .location-details {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .detail-item {
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #C4603A;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-weight: 700;
+            color: #5C3D2E;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Community Section */
+        .community {
+            text-align: center;
+        }
+
+        .community .accent-text {
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #4A3728;
+            color: #FAF7F2;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        footer h3 {
+            color: #FAF7F2;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .info-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .location-details {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .menu-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .info-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">Britton Coffee Co</a>
+                <div class="hours">
+                    <div>Mon–Fri: 7am–1pm</div>
+                    <div>Sat–Sun: 7am–3pm</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Hidden Downtown. Perfectly Crafted.</h1>
+                <p>Tucked away in the basement of historic McCallister Hotel, we serve carefully crafted coffee and fresh baked goods. Find us on York Street — your new favorite spot is just below street level.</p>
+                <a href="#visit" class="cta-button">Visit Us Today</a>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h2>Specialty Drinks</h2>
+                <p>We rotate seasonal specials and craft each cup with care. Here's what's brewing today.</p>
+                
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h3>Blackberry White Mocha</h3>
+                        <p>Our signature barista special — house white chocolate meets fresh blackberry</p>
+                        <span class="price">$4.50</span>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <h3>Pumpkin Latte</h3>
+                        <p>Real pumpkin, warm spices, steamed to perfection</p>
+                        <span class="price">$4.25</span>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <h3>Vanilla Latte</h3>
+                        <p>Classic comfort in a cup — pure vanilla, no artificial sweeteners</p>
+                        <span class="price">$4.00</span>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <h3>Chai Latte</h3>
+                        <p>House-blended chai with locally steamed milk</p>
+                        <span class="price">$4.00</span>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <h3>Daily Drip Coffee</h3>
+                        <p>Single-origin beans, freshly ground every morning</p>
+                        <span class="price">$2.50</span>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <h3>Espresso Drinks</h3>
+                        <p>Americanos, cappuccinos, cortados — all the classics</p>
+                        <span class="price">$3.00–$4.50</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-alt">
+            <div class="container">
+                <h2>Fresh Baked Daily</h2>
+                <p>Breakfast bites and sweet treats made in-house every morning.</p>
+                
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h3>Spinach Egg Bites</h3>
+                        <p>Our only gluten-free option — packed with flavor and protein</p>
+                        <span class="price">$3.50</span>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <h3>Breakfast Pastries</h3>
+                        <p>Croissants, muffins, scones — pairs perfectly with coffee</p>
+                        <span class="price">$2.00–$4.00</span>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <h3>Daily Desserts</h3>
+                        <p>Sweet endings to your coffee break — ask what's fresh today</p>
+                        <span class="price">$3.00–$5.00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="gradient-accent">
+            <div class="container">
+                <div class="community">
+                    <span class="accent-text">More than just coffee</span>
+                    <h2>A Place to Belong</h2>
+                    <p>Grab our community guitar and play a song. Stay for an hour or just grab and go. We're here for whatever your morning needs — consistent craft, no pretense, just good coffee in a space that feels like home.</p>
+                </div>
+            </div>
+        </div>
+
+        <section>
+            <div class="container">
+                <h2>Easy to Find, Easy to Park</h2>
+                
+                <div class="info-cards">
+                    <div class="info-card">
+                        <h3>Historic Location</h3>
+                        <p>Basement level of McCallister Hotel — look for the York Street entrance</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>Free Street Parking</h3>
+                        <p>Plus paid lots nearby if you're staying longer</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>Fully Accessible</h3>
+                        <p>Wheelchair accessible entrance, seating, and restroom</p>
+                    </div>
+                </div>
+
+                <div class="location-info" id="visit">
+                    <h3>Visit Us</h3>
+                    <div class="location-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Address</div>
+                            <div>11 York St, Suite 602 Basement<br>Hanover, PA 17331</div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Hours</div>
+                            <div>Monday–Friday: 7am–1pm<br>Saturday–Sunday: 7am–3pm</div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">Payment</div>
+                            <div>Credit, debit, and contactless payments accepted</div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">WiFi</div>
+                            <div>Free WiFi available</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h3>Britton Coffee Co</h3>
+            <p>11 York St, Suite 602 Basement</p>
+            <p>Hanover, PA 17331</p>
+            <p style="margin-top: 1rem;">Mon–Fri: 7am–1pm | Sat–Sun: 7am–3pm</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Britton Coffee Co - South Hanover</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Source+Serif+Pro:wght@400;600&family=Dancing+Script:wght@700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #5C3D2E;
+            background-color: #FAF7F2;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 20px 0;
+            background: linear-gradient(45deg, #5C3D2E, #7A8C6E);
+            color: white;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        .phone {
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .hero {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #F5ECD7 0%, #C4603A 50%, #7A8C6E 100%);
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(92, 61, 46, 0.3);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .hero .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .section {
+            padding: 50px 0;
+        }
+        
+        .section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .features {
+            background: linear-gradient(45deg, #FAF7F2, #F5ECD7);
+        }
+        
+        .features-grid {
+            display: grid;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(92, 61, 46, 0.1);
+            border-left: 4px solid #C4603A;
+        }
+        
+        .feature-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #C4603A;
+        }
+        
+        .menu {
+            background: linear-gradient(135deg, #7A8C6E, #5C3D2E);
+            color: white;
+        }
+        
+        .menu h2 {
+            color: white;
+        }
+        
+        .menu-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .menu-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .menu-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .drive-through {
+            text-align: center;
+            background: linear-gradient(45deg, #C4603A, #B85C38);
+            color: white;
+        }
+        
+        .drive-through h2 {
+            color: white;
+        }
+        
+        .pup-friendly {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #C4603A;
+            text-align: center;
+            margin: 30px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .info-section {
+            background: white;
+        }
+        
+        .info-grid {
+            display: grid;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .info-card {
+            padding: 25px;
+            background: linear-gradient(45deg, #F5ECD7, #FAF7F2);
+            border-radius: 8px;
+        }
+        
+        .info-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #5C3D2E;
+        }
+        
+        .hours-grid {
+            display: grid;
+            gap: 5px;
+            margin-top: 15px;
+        }
+        
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+        }
+        
+        footer {
+            background: #5C3D2E;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .footer-section h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .accessibility-note {
+            background: linear-gradient(45deg, #7A8C6E, #6B7F5E);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            font-style: italic;
+        }
+        
+        @media (min-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+                text-align: left;
+            }
+            
+            .phone {
+                margin-top: 0;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Britton Coffee Co</div>
+            <div class="phone">(717) 640-7620</div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Your Neighborhood Coffee Haven</h1>
+            <p class="tagline">Where quality meets community in South Hanover. Every cup tells a story, every visit feels like home.</p>
+        </div>
+    </section>
+
+    <section class="features section">
+        <div class="container">
+            <h2>Why We're Different</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Quality That Surprises</h3>
+                    <p>We don't cut corners on details. Our white chocolate mochas and caramel cold foam macchiatos taste like they cost twice what you pay.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Always Something New</h3>
+                    <p>Our menu evolves with the seasons. Regular customers tell us they love discovering our latest creations each visit.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>City Coffee, Small Town Heart</h3>
+                    <p>Sit, study, read, or just enjoy the music. We're the uptown coffee experience you didn't expect to find here.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu section">
+        <div class="container">
+            <h2>What We're Brewing</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Signature Espresso Drinks</h3>
+                    <p>Hot white chocolate mochas, caramel cold foam iced macchiatos, and perfectly pulled lattes that keep our regulars coming back.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Fresh Baked Daily</h3>
+                    <p>Donuts and muffins baked fresh each morning. Sweet treats that pair perfectly with your morning coffee ritual.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Breakfast Done Right</h3>
+                    <p>Our breakfast sandwiches aren't an afterthought. They're made with the same attention to quality as everything else we serve.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Seasonal Specials</h3>
+                    <p>Keep an eye on our boards for rotating seasonal drinks and limited-time offerings that showcase what's fresh and inspired.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="drive-through section">
+        <div class="container">
+            <h2>Drive-Through Made Seamless</h2>
+            <p>No long waits. No complicated orders. Just quick, friendly service that gets you back on your way with exactly what you wanted.</p>
+            <div class="pup-friendly">Pup cups for your four-legged co-pilot!</div>
+            <p>Bring your dog along – our team loves saying hello and sending you off with a special treat for them too.</p>
+        </div>
+    </section>
+
+    <section class="info-section section">
+        <div class="container">
+            <h2>Visit Us</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Hours & Location</h3>
+                    <p><strong>2633 Baltimore Pike<br>Hanover, PA 17331</strong></p>
+                    <div class="hours-grid">
+                        <div class="hours-row">
+                            <span>Monday – Friday</span>
+                            <span>6am – 6pm</span>
+                        </div>
+                        <div class="hours-row">
+                            <span>Saturday – Sunday</span>
+                            <span>7am – 6pm</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <h3>What to Expect</h3>
+                    <p>Outdoor seating for nice days. Live music events throughout the month. Dog-friendly atmosphere. Free parking with wheelchair-accessible spaces. Perfect for groups or solo coffee dates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="accessibility-note">
+        <div class="container">
+            <p>Fully wheelchair accessible – parking, entrance, restroom, and seating areas. Everyone deserves great coffee in a welcoming space.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>2633 Baltimore Pike<br>Hanover, PA 17331<br>(717) 640-7620</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Hours</h4>
+                    <p>Mon-Fri: 6am-6pm<br>Sat-Sun: 7am-6pm</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <p>Find us on social media for daily specials, live music schedules, and behind-the-scenes coffee magic.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

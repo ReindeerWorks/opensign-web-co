@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Gourmet Bistro & Brewpub</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Serif+Pro:wght@400;600&family=Dancing+Script:wght@500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Serif Pro', serif;
+            line-height: 1.6;
+            color: #4A3728;
+            background-color: #FAF7F2;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #5C3D2E, #4A3728);
+            color: #FAF7F2;
+            padding: 20px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #F5ECD7;
+        }
+        
+        .contact-info {
+            font-size: 0.9rem;
+        }
+        
+        .contact-info div {
+            margin-bottom: 5px;
+        }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(45deg, #C4603A, #B85C38);
+            color: #FAF7F2;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #F5ECD7;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .tagline {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            color: #F5ECD7;
+            margin-top: 10px;
+        }
+        
+        /* Menu Highlights */
+        .menu-highlights {
+            padding: 60px 0;
+            background-color: #F5ECD7;
+        }
+        
+        .menu-highlights h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #4A3728;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        .menu-item {
+            background: #FAF7F2;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(90, 61, 46, 0.1);
+        }
+        
+        .menu-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #B85C38;
+        }
+        
+        /* Gluten-Free Section */
+        .gluten-free {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #7A8C6E, #6B7F5E);
+            color: #FAF7F2;
+            text-align: center;
+        }
+        
+        .gluten-free h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .gluten-free p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Scratch Kitchen */
+        .scratch-kitchen {
+            padding: 60px 0;
+            background-color: #FAF7F2;
+        }
+        
+        .scratch-kitchen h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #4A3728;
+        }
+        
+        .scratch-features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .feature h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #B85C38;
+        }
+        
+        /* Reservations CTA */
+        .reservations-cta {
+            background: linear-gradient(45deg, #B85C38, #C4603A);
+            color: #FAF7F2;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .reservations-cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .cta-button {
+            background: #4A3728;
+            color: #F5ECD7;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-family: 'Source Serif Pro', serif;
+            margin-top: 20px;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        /* Hours & Location */
+        .hours-location {
+            padding: 60px 0;
+            background-color: #F5ECD7;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        
+        .info-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #4A3728;
+        }
+        
+        .hours-list {
+            list-style: none;
+        }
+        
+        .hours-list li {
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(180, 92, 56, 0.2);
+        }
+        
+        /* Takeout & Delivery */
+        .takeout-delivery {
+            background: linear-gradient(135deg, #6B7F5E, #7A8C6E);
+            color: #FAF7F2;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .takeout-delivery h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .delivery-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .option {
+            background: rgba(250, 247, 242, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        /* About */
+        .about {
+            padding: 60px 0;
+            background-color: #FAF7F2;
+        }
+        
+        .about h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #4A3728;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        /* Footer */
+        footer {
+            background: #4A3728;
+            color: #F5ECD7;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        /* Responsive */
+        @media (min-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .logo {
+                font-size: 2.2rem;
+            }
+            
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .scratch-features {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .delivery-options {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Warehouse Gourmet</div>
+                <div class="contact-info">
+                    <div>(717) 451-9898</div>
+                    <div>7 Pennsylvania Ave, Hanover, PA 17331</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Your Cozy Refuge</h1>
+            <p>Step into warmth. House-brewed beers. Globally-inspired comfort food made from scratch. The kind of place you come to thaw out on bitter cold nights.</p>
+            <div class="tagline">Where warehouse meets warmth</div>
+        </div>
+    </section>
+
+    <section class="menu-highlights">
+        <div class="container">
+            <h2>What We're Known For</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>House-Brewed Craft Beers</h3>
+                    <p>Fresh from our taps. Made right here, poured right here. Each batch tells a story.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Coconut Curry Chicken</h3>
+                    <p>Well-seasoned with the perfect amount of spice. Tender chicken over jasmine rice that's never mushy.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Rotating Daily Specials</h3>
+                    <p>Fresh salads with hummus and olive tapenade. Seasonal ingredients. Always something new to try.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>House-Made Everything</h3>
+                    <p>From our flavorful salad dressings to our closing-act cheesecake. We make it here.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gluten-free">
+        <div class="container">
+            <h2>Complete Gluten-Free Menu</h2>
+            <p>Not just modifications. We have an entire dedicated gluten-free menu. Real options for everyone at your table.</p>
+        </div>
+    </section>
+
+    <section class="scratch-kitchen">
+        <div class="container">
+            <h2>Made From Scratch, Every Day</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px;">You taste the difference when everything starts with fresh ingredients and careful hands.</p>
+            <div class="scratch-features">
+                <div class="feature">
+                    <h3>House Dressings</h3>
+                    <p>Every salad gets our own flavorful dressings. Made fresh, never from a bottle.</p>
+                </div>
+                <div class="feature">
+                    <h3>Fresh Ingredients</h3>
+                    <p>We source quality ingredients and let them shine. Simple approach, bold flavors.</p>
+                </div>
+                <div class="feature">
+                    <h3>Careful Preparation</h3>
+                    <p>Each dish gets the attention it deserves. No shortcuts, just good food.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reservations-cta">
+        <div class="container">
+            <h2>Save Your Spot</h2>
+            <p>Especially on weekend nights. We'd hate for you to wait when you're ready for warmth.</p>
+            <a href="tel:717-451-9898" class="cta-button">Call for Reservations</a>
+        </div>
+    </section>
+
+    <section class="hours-location">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-section">
+                    <h3>Hours</h3>
+                    <ul class="hours-list">
+                        <li><strong>Monday - Tuesday:</strong> Closed</li>
+                        <li><strong>Wednesday - Thursday:</strong> 11:30am - 8:30pm</li>
+                        <li><strong>Friday - Saturday:</strong> 11:30am - 9:00pm</li>
+                        <li><strong>Sunday:</strong> Closed</li>
+                    </ul>
+                </div>
+                <div class="info-section">
+                    <h3>Visit Us</h3>
+                    <p><strong>7 Pennsylvania Ave</strong><br>
+                    Hanover, PA 17331<br>
+                    (717) 451-9898</p>
+                    <p style="margin-top: 15px;"><strong>Parking:</strong> Free lot, paid lot, and street parking available</p>
+                    <p><strong>Accessibility:</strong> Wheelchair accessible parking, restroom, and seating</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="takeout-delivery">
+        <div class="container">
+            <h2>Can't Stay? We'll Pack It Up</h2>
+            <p>All our homemade goodness travels well. Same quality, same care.</p>
+            <div class="delivery-options">
+                <div class="option">
+                    <h3>Dine-In</h3>
+                    <p>Full atmosphere experience with table service</p>
+                </div>
+                <div class="option">
+                    <h3>Takeout</h3>
+                    <p>Call ahead and we'll have it ready when you arrive</p>
+                </div>
+                <div class="option">
+                    <h3>Delivery</h3>
+                    <p>We deliver to your door in the local area</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <h2>The Warehouse Story</h2>
+            <div class="about-content">
+                <p>We started with a simple idea: take the bones of an old warehouse and fill it with warmth. Keep the industrial character but add house-made comfort food and fresh-brewed beer.</p>
+                
+                <p>The result is a place where you can taste the care in every dish. Where our servers like Ethan and Marie know the menu inside out and help you find exactly what you're craving. Where you come for the globally-inspired food but stay for the atmosphere.</p>
+                
+                <p>We're not trying to be fancy. We're trying to be the place you think of when the weather turns cold and you need somewhere warm, inviting, and real.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Warehouse Gourmet Bistro & Brewpub | 7 Pennsylvania Ave, Hanover, PA 17331 | (717) 451-9898</p>
+            <p style="margin-top: 10px;">Accepts credit cards, debit cards, and contactless payments</p>
+        </div>
+    </footer>
+</body>
+</html>

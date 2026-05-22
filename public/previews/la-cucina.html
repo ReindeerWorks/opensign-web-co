@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Cucina - Downtown Hanover, PA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Source+Serif+Pro:wght@300;400;600&family=Dancing+Script:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Serif Pro', serif;
+            line-height: 1.7;
+            color: #4A3728;
+            background-color: #FAF7F2;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #5C3D2E 0%, #B85C38 50%, #F5ECD7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 600px;
+            color: #FAF7F2;
+        }
+        
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        
+        .hero-tagline {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #F5ECD7;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #F5ECD7;
+            color: #4A3728;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .cta-button:hover {
+            background: #FAF7F2;
+            transform: translateY(-2px);
+        }
+        
+        .section {
+            padding: 4rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #5C3D2E;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .story-section {
+            background: linear-gradient(45deg, #F5ECD7 0%, #FAF7F2 100%);
+        }
+        
+        .menu-highlights {
+            padding: 5rem 1rem;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .menu-item {
+            background: #FAF7F2;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(92, 61, 46, 0.1);
+        }
+        
+        .menu-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #B85C38;
+            margin-bottom: 1rem;
+        }
+        
+        .bar-section {
+            background: linear-gradient(135deg, #5C3D2E 0%, #4A3728 100%);
+            color: #F5ECD7;
+            text-align: center;
+        }
+        
+        .bar-section h2,
+        .bar-section p {
+            color: #F5ECD7;
+        }
+        
+        .reservations {
+            background: #B85C38;
+            color: #FAF7F2;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+        
+        .reservations h2 {
+            color: #FAF7F2;
+            margin-bottom: 1rem;
+        }
+        
+        .reservations .cta-button {
+            background: #FAF7F2;
+            color: #B85C38;
+            margin-top: 1rem;
+        }
+        
+        .phone-link {
+            color: #F5ECD7;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .private-dining {
+            background: #F5ECD7;
+        }
+        
+        .location-hours {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .location-box,
+        .hours-box {
+            background: #FAF7F2;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(92, 61, 46, 0.1);
+        }
+        
+        .location-box h3,
+        .hours-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: #B85C38;
+            margin-bottom: 1rem;
+        }
+        
+        .hours-list {
+            list-style: none;
+        }
+        
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+        
+        .reviews {
+            background: linear-gradient(45deg, #F5ECD7 0%, #FAF7F2 100%);
+            text-align: center;
+        }
+        
+        .review-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .review-card {
+            background: #FAF7F2;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(92, 61, 46, 0.1);
+        }
+        
+        .review-card p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .reviewer {
+            font-weight: 600;
+            color: #B85C38;
+        }
+        
+        .footer {
+            background: #4A3728;
+            color: #F5ECD7;
+            text-align: center;
+            padding: 3rem 1rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info {
+            margin: 2rem 0;
+        }
+        
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .dietary-note {
+            background: #7A8C6E;
+            color: #FAF7F2;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-style: italic;
+        }
+        
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 5rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .location-hours {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .review-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .menu-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .review-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>La Cucina</h1>
+            <p class="hero-tagline">Hanover's beloved Italian returns</p>
+            <p>Armando Malvone has brought La Cucina back to downtown with a beautiful new space, exceptional Italian cuisine, and the warmest hospitality in town.</p>
+            <a href="#reservations" class="cta-button">Reserve Your Table</a>
+        </div>
+    </section>
+
+    <section class="section story-section">
+        <h2>Welcome Back to La Cucina</h2>
+        <p>After years away, La Cucina has returned to the heart of Hanover stronger than ever. Owner Armando Malvone personally oversees every detail — from the thoughtfully designed dining room to the house-made specialties that emerge from our kitchen.</p>
+        
+        <p>You'll find Armando greeting guests, sharing stories, and ensuring each visit feels special. This is Italian hospitality the way it should be: genuine, generous, and unforgettable.</p>
+        
+        <p>Whether you're settling in at our lively bar or enjoying an intimate dinner, you're not just dining with us. You're becoming part of the La Cucina family.</p>
+    </section>
+
+    <section class="section menu-highlights">
+        <h2>From Our Kitchen</h2>
+        <p>Every dish reflects our commitment to authentic Italian flavors and the finest ingredients. Our chefs craft each plate with care, creating meals that feel both familiar and extraordinary.</p>
+        
+        <div class="dietary-note">
+            Our team is expertly trained in gluten-free and dietary accommodations. Just let us know how we can make your meal perfect for you.
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-item">
+                <h3>Antipasto Excellence</h3>
+                <p>Our signature antipasto platter showcases the finest Italian cured meats, artisan cheeses, and seasonal accompaniments. It's become legendary among our guests for good reason.</p>
+            </div>
+            
+            <div class="menu-item">
+                <h3>Fresh Pasta Daily</h3>
+                <p>House-made pasta prepared fresh every day, served with traditional sauces that have been perfected over generations. Each bite transports you straight to Italy.</p>
+            </div>
+            
+            <div class="menu-item">
+                <h3>Signature Entrees</h3>
+                <p>From tender osso buco to perfectly grilled branzino, our entrees celebrate the diversity and richness of Italian cuisine with a contemporary touch.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bar-section">
+        <h2>Our Bar</h2>
+        <p>Step into our welcoming bar area for expertly crafted cocktails, an extensive Italian wine selection, and the kind of conversation that makes evenings memorable.</p>
+        
+        <p>Walk-ins are always welcome at the bar, even on our busiest Saturday nights. Armando often stops by with a complimentary taste or special recommendation that turns a good night into a great one.</p>
+        
+        <p>Whether you're here for aperitivo or staying for dinner, our bar captures the convivial spirit that makes Italian dining so special.</p>
+    </section>
+
+    <section class="reservations" id="reservations">
+        <h2>Reserve Your Table</h2>
+        <p>Ready for an evening of exceptional Italian cuisine and warm hospitality?</p>
+        <p>Call us at <a href="tel:7177975918" class="phone-link">(717) 797-5918</a> to reserve your table.</p>
+        <a href="tel:7177975918" class="cta-button">Call Now</a>
+    </section>
+
+    <section class="section private-dining">
+        <h2>Private Events</h2>
+        <p>Our beautiful upstairs banquet space is perfect for special celebrations, corporate events, and family gatherings. With the same exceptional cuisine and attentive service that defines La Cucina, your private event will be truly memorable.</p>
+        
+        <p>From intimate birthday dinners to larger corporate functions, we'll work with you to create exactly the experience you envision.</p>
+        
+        <p>Contact us to discuss your event and let us bring our Italian hospitality to your special occasion.</p>
+    </section>
+
+    <section class="section">
+        <h2>Visit Us in Downtown Hanover</h2>
+        <div class="location-hours">
+            <div class="location-box">
+                <h3>Find Us</h3>
+                <p><strong>11 York St<br>Hanover, PA 17331</strong></p>
+                <p>Located in the heart of downtown Hanover, we're easily accessible with paid parking lot and street parking nearby.</p>
+                <p><strong>Phone:</strong> (717) 797-5918</p>
+            </div>
+            
+            <div class="hours-box">
+                <h3>Hours</h3>
+                <ul class="hours-list">
+                    <li><span>Monday</span> <span>Closed</span></li>
+                    <li><span>Tuesday - Thursday</span> <span>4:00pm - 9:00pm</span></li>
+                    <li><span>Friday</span> <span>4:00pm - 10:00pm</span></li>
+                    <li><span>Saturday</span> <span>11:00am - 10:00pm</span></li>
+                    <li><span>Sunday</span> <span>11:00am - 8:00pm</span></li>
+                </ul>
+                <p style="margin-top: 1rem; font-style: italic;">Lunch served Saturday & Sunday</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section reviews">
+        <h2>What Our Guests Say</h2>
+        <div class="review-grid">
+            <div class="review-card">
+                <p>"The owner, Armando, personally visits tables and creates such a welcoming atmosphere. The attention to detail and genuine hospitality sets this place apart."</p>
+                <div class="reviewer">— Maria K.</div>
+            </div>
+            
+            <div class="review-card">
+                <p>"I have celiac disease and the staff was incredibly knowledgeable about accommodating my needs. Finally, an Italian restaurant where I can dine with complete confidence."</p>
+                <div class="reviewer">— David R.</div>
+            </div>
+            
+            <div class="review-card">
+                <p>"So glad La Cucina is back in Hanover! The new space is beautiful and the food is even better than I remembered. That antipasto platter is absolutely incredible."</p>
+                <div class="reviewer">— Jennifer M.</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>La Cucina</h3>
+            <div class="contact-info">
+                <p>11 York St, Hanover, PA 17331</p>
+                <p>(717) 797-5918</p>
+                <p>Dine-in • Takeout • Private Events</p>
+                <p>Fully Accessible • All Cards Accepted</p>
+            </div>
+            <p>&copy; 2024 La Cucina. Benvenuti alla famiglia.</p>
+        </div>
+    </footer>
+</body>
+</html>
