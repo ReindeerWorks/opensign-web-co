@@ -1,0 +1,217 @@
+{
+  "model": "claude-sonnet-4-6",
+  "total": 35,
+  "correct": 34,
+  "cases": [
+    {
+      "case_id": "INFO_01",
+      "expected_bucket": "INFORMATIONAL",
+      "predicted_bucket": "INFORMATIONAL",
+      "match": true
+    },
+    {
+      "case_id": "INFO_02",
+      "expected_bucket": "INFORMATIONAL",
+      "predicted_bucket": "INFORMATIONAL",
+      "match": true
+    },
+    {
+      "case_id": "INFO_03",
+      "expected_bucket": "INFORMATIONAL",
+      "predicted_bucket": "INFORMATIONAL",
+      "match": true
+    },
+    {
+      "case_id": "INFO_04",
+      "expected_bucket": "INFORMATIONAL",
+      "predicted_bucket": "INFORMATIONAL",
+      "match": true
+    },
+    {
+      "case_id": "INFO_05",
+      "expected_bucket": "INFORMATIONAL",
+      "predicted_bucket": "INFORMATIONAL",
+      "match": true
+    },
+    {
+      "case_id": "INFO_06",
+      "expected_bucket": "INFORMATIONAL",
+      "predicted_bucket": "INFORMATIONAL",
+      "match": true
+    },
+    {
+      "case_id": "AUTO_01",
+      "expected_bucket": "AUTO_HANDLE",
+      "predicted_bucket": "AUTO_HANDLE",
+      "match": true
+    },
+    {
+      "case_id": "AUTO_02",
+      "expected_bucket": "AUTO_HANDLE",
+      "predicted_bucket": "AUTO_HANDLE",
+      "match": true
+    },
+    {
+      "case_id": "AUTO_03",
+      "expected_bucket": "AUTO_HANDLE",
+      "predicted_bucket": "AUTO_HANDLE",
+      "match": true
+    },
+    {
+      "case_id": "AUTO_04",
+      "expected_bucket": "AUTO_HANDLE",
+      "predicted_bucket": "AUTO_HANDLE",
+      "match": true
+    },
+    {
+      "case_id": "AUTO_05",
+      "expected_bucket": "AUTO_HANDLE",
+      "predicted_bucket": "AUTO_HANDLE",
+      "match": true
+    },
+    {
+      "case_id": "AUTO_06",
+      "expected_bucket": "AUTO_HANDLE",
+      "predicted_bucket": "AUTO_HANDLE",
+      "match": true
+    },
+    {
+      "case_id": "AUTO_07",
+      "expected_bucket": "AUTO_HANDLE",
+      "predicted_bucket": "AUTO_HANDLE",
+      "match": true
+    },
+    {
+      "case_id": "CLARIFY_01",
+      "expected_bucket": "CLARIFY",
+      "predicted_bucket": "CLARIFY",
+      "match": true
+    },
+    {
+      "case_id": "CLARIFY_02",
+      "expected_bucket": "CLARIFY",
+      "predicted_bucket": "CLARIFY",
+      "match": true
+    },
+    {
+      "case_id": "CLARIFY_03",
+      "expected_bucket": "CLARIFY",
+      "predicted_bucket": "CLARIFY",
+      "match": true
+    },
+    {
+      "case_id": "CLARIFY_04",
+      "expected_bucket": "CLARIFY",
+      "predicted_bucket": "CLARIFY",
+      "match": true
+    },
+    {
+      "case_id": "CLARIFY_05",
+      "expected_bucket": "CLARIFY",
+      "predicted_bucket": "CLARIFY",
+      "match": true
+    },
+    {
+      "case_id": "CLARIFY_06",
+      "expected_bucket": "CLARIFY",
+      "predicted_bucket": "CLARIFY",
+      "match": true
+    },
+    {
+      "case_id": "QUOTE_01",
+      "expected_bucket": "QUOTE",
+      "predicted_bucket": "QUOTE",
+      "match": true
+    },
+    {
+      "case_id": "QUOTE_02",
+      "expected_bucket": "QUOTE",
+      "predicted_bucket": "QUOTE",
+      "match": true
+    },
+    {
+      "case_id": "QUOTE_03",
+      "expected_bucket": "QUOTE",
+      "predicted_bucket": "QUOTE",
+      "match": true
+    },
+    {
+      "case_id": "QUOTE_04",
+      "expected_bucket": "QUOTE",
+      "predicted_bucket": "QUOTE",
+      "match": true
+    },
+    {
+      "case_id": "QUOTE_05",
+      "expected_bucket": "QUOTE",
+      "predicted_bucket": "QUOTE",
+      "match": true
+    },
+    {
+      "case_id": "QUOTE_06",
+      "expected_bucket": "QUOTE",
+      "predicted_bucket": "QUOTE",
+      "match": true
+    },
+    {
+      "case_id": "ESC_01",
+      "expected_bucket": "ESCALATE",
+      "predicted_bucket": "ESCALATE",
+      "match": true
+    },
+    {
+      "case_id": "ESC_02",
+      "expected_bucket": "ESCALATE",
+      "predicted_bucket": "ESCALATE",
+      "match": true
+    },
+    {
+      "case_id": "ESC_03",
+      "expected_bucket": "ESCALATE",
+      "predicted_bucket": "ESCALATE",
+      "match": true
+    },
+    {
+      "case_id": "ESC_04",
+      "expected_bucket": "ESCALATE",
+      "predicted_bucket": "ESCALATE",
+      "match": true
+    },
+    {
+      "case_id": "ESC_05",
+      "expected_bucket": "ESCALATE",
+      "predicted_bucket": "ESCALATE",
+      "match": true
+    },
+    {
+      "case_id": "ESC_06",
+      "expected_bucket": "ESCALATE",
+      "predicted_bucket": "ESCALATE",
+      "match": true
+    },
+    {
+      "case_id": "EDGE_01",
+      "expected_bucket": "QUOTE",
+      "predicted_bucket": "QUOTE",
+      "match": true
+    },
+    {
+      "case_id": "EDGE_02",
+      "expected_bucket": "ESCALATE",
+      "predicted_bucket": "AUTO_HANDLE",
+      "match": false
+    },
+    {
+      "case_id": "EDGE_03",
+      "expected_bucket": "ESCALATE",
+      "predicted_bucket": "ESCALATE",
+      "match": true
+    },
+    {
+      "case_id": "EDGE_04",
+      "expected_bucket": "QUOTE",
+      "predicted_bucket": "QUOTE",
+      "match": true
+    }
+  ]
+}

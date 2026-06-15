@@ -13,6 +13,11 @@ Usage (from project root):
     python3 scripts/stage8/classifier-eval/run_eval.py --case-id AUTO_01
     python3 scripts/stage8/classifier-eval/run_eval.py --model claude-sonnet-4-6
 
+Each run also writes a per-model JSON artifact (results_<model>.json) for
+side-by-side comparison across models:
+    python3 scripts/stage8/classifier-eval/run_eval.py \\
+        --compare results_claude-sonnet-4-6.json results_claude-fable-5.json
+
 Env:
     ANTHROPIC_API_KEY (required)
 
@@ -29,7 +34,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 # ---- Config ------------------------------------------------------------
@@ -227,6 +232,108 @@ def write_results(rows, path):
         for r in rows:
             w.writerow(r)
 
+# ---- Per-model artifact + comparison -----------------------------------
+
+def model_slug(model):
+    """Filesystem-safe form of a model id, for the artifact filename."""
+    return model.replace("/", "_").replace(" ", "_")
+
+def model_results_path(model):
+    return SCRIPT_DIR / f"results_{model_slug(model)}.json"
+
+def write_model_results(rows, model):
+    """Persist a per-model artifact keyed by model id.
+
+    One record per case (case_id, expected_bucket, predicted_bucket, match)
+    plus a header with the model and its overall score, so two runs on
+    different models can be diffed by `--compare`.
+    """
+    path = model_results_path(model)
+    payload = {
+        "model": model,
+        "total": len(rows),
+        "correct": sum(1 for r in rows if r["match"]),
+        "cases": [
+            {
+                "case_id": r["case_id"],
+                "expected_bucket": r["expected_bucket"],
+                "predicted_bucket": r["predicted_bucket"],
+                "match": bool(r["match"]),
+            }
+            for r in rows
+        ],
+    }
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    return path
+
+def load_model_results(path):
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    if not isinstance(data, dict) or "model" not in data or "cases" not in data:
+        raise RuntimeError(
+            f"{path}: not a per-model results file (missing 'model'/'cases'). "
+            f"Generate one with a normal eval run."
+        )
+    return data
+
+def compare(path_a, path_b):
+    """Print a side-by-side report of two per-model results files."""
+    a = load_model_results(path_a)
+    b = load_model_results(path_b)
+    model_a, model_b = a["model"], b["model"]
+    cases_a = {c["case_id"]: c for c in a["cases"]}
+    cases_b = {c["case_id"]: c for c in b["cases"]}
+
+    total_a = a.get("total", len(a["cases"]))
+    total_b = b.get("total", len(b["cases"]))
+    correct_a = a.get("correct", sum(1 for c in a["cases"] if c["match"]))
+    correct_b = b.get("correct", sum(1 for c in b["cases"] if c["match"]))
+
+    print("=" * 72)
+    print(f"Compare: {model_a}  vs  {model_b}")
+    print("=" * 72)
+    print()
+    print("Accuracy:")
+    print(f"  {model_a:24s} {correct_a}/{total_a}")
+    print(f"  {model_b:24s} {correct_b}/{total_b}")
+    print()
+
+    # Bucket distribution over predicted labels. Show every valid bucket
+    # (all five the harness uses), plus any extra label that actually
+    # appeared (e.g. ERROR) so nothing is silently dropped.
+    seen = ({c["predicted_bucket"] for c in a["cases"]}
+            | {c["predicted_bucket"] for c in b["cases"]})
+    bucket_order = sorted(VALID_BUCKETS) + sorted(seen - VALID_BUCKETS)
+    da = Counter(c["predicted_bucket"] for c in a["cases"])
+    db = Counter(c["predicted_bucket"] for c in b["cases"])
+    print("Predicted bucket distribution:")
+    print(f"  {'bucket':15s} {model_a:>22s} {model_b:>22s}")
+    for bk in bucket_order:
+        print(f"  {bk:15s} {da.get(bk, 0):>22d} {db.get(bk, 0):>22d}")
+    print()
+
+    # Disagreements, aligned by case_id (a-order first, then any b-only ids).
+    ids = [c["case_id"] for c in a["cases"]]
+    ids += [cid for cid in cases_b if cid not in cases_a]
+    disagreements = []
+    for cid in ids:
+        ca, cb = cases_a.get(cid), cases_b.get(cid)
+        pa = ca["predicted_bucket"] if ca else "(absent)"
+        pb = cb["predicted_bucket"] if cb else "(absent)"
+        if pa != pb:
+            exp = (ca or cb)["expected_bucket"]
+            disagreements.append((cid, exp, pa, pb))
+    if disagreements:
+        print(f"Disagreements ({len(disagreements)}):")
+        print(f"  {'case_id':12s} {'expected':15s} {model_a:>22s} {model_b:>22s}")
+        for cid, exp, pa, pb in disagreements:
+            print(f"  {cid:12s} {exp:15s} {pa:>22s} {pb:>22s}")
+    else:
+        print("Disagreements: none — both models predicted the same bucket "
+              "on every case.")
+
 def print_summary(rows):
     total = len(rows)
     correct = sum(1 for r in rows if r["match"])
@@ -268,7 +375,15 @@ def main():
                    help="Run only the first N cases (smoke test).")
     p.add_argument("--case-id", default=None,
                    help="Run only the case with this ID.")
+    p.add_argument("--compare", nargs=2, metavar=("RESULTS_A", "RESULTS_B"),
+                   default=None,
+                   help="Compare two per-model results JSON files and exit. "
+                        "Does not call the API.")
     args = p.parse_args()
+
+    if args.compare:
+        compare(args.compare[0], args.compare[1])
+        return
 
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
@@ -298,6 +413,8 @@ def main():
     rows = run(cases, api_key, args.model, system_prompt)
     write_results(rows, RESULTS_PATH)
     print(f"\nWrote {RESULTS_PATH}")
+    model_results = write_model_results(rows, args.model)
+    print(f"Wrote {model_results}")
     print_summary(rows)
 
 if __name__ == "__main__":
