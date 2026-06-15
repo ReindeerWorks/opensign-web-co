@@ -1,0 +1,21 @@
+{
+  "FromName": "Joe Diner",
+  "From": "joe@joesdiner.example",
+  "FromFull": {
+    "Email": "joe@joesdiner.example",
+    "Name": "Joe Diner",
+    "MailboxHash": ""
+  },
+  "To": "support@opensignwebco.com",
+  "ToFull": [
+    { "Email": "support@opensignwebco.com", "Name": "", "MailboxHash": "" }
+  ],
+  "Subject": "Can you update my hours?",
+  "MessageID": "11111111-2222-3333-4444-555555555555",
+  "Date": "Mon, 16 Jun 2025 09:14:02 -0400",
+  "TextBody": "Hi! Could you change my Saturday hours to 8am-2pm? Thanks, Joe",
+  "HtmlBody": "<p>Hi! Could you change my Saturday hours to 8am-2pm? Thanks, Joe</p>",
+  "StrippedTextReply": "",
+  "Tag": "",
+  "Attachments": []
+}
