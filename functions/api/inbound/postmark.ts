@@ -2,12 +2,22 @@
 //
 // Postmark receives mail to our support address and POSTs an INBOUND webhook
 // here. This Function authenticates the webhook, fast-acknowledges (200), and
-// in the background dedupes, matches the sender to a Customer, and writes a
-// Request (+ Request Event) to Airtable.
+// in the background dedupes, matches the sender to a Customer, classifies the
+// email (matched senders only), and writes a Request (+ Request Events) to
+// Airtable.
 //
-// SCOPE: intake only. This file does NOT classify, generate, deploy, or email.
-// Classification of matched requests is the next task. Unmatched senders are
-// always written as Escalate and never classified — a hard rule (see below).
+// SCOPE: intake + classification only. This file does NOT execute anything —
+// no change generation, no preview deploys, no outbound email. Even an
+// Auto-handle classification is only recorded; execution is a later stage.
+// Unmatched senders are always written as Escalate and never classified — a
+// hard rule (see below).
+//
+// The classifier request contract (model, system prompt, tool schema, parsing)
+// is ported 1:1 from the validated eval harness
+// scripts/stage8/classifier-eval/run_eval.py. The system prompt is the LOCKED
+// scripts/stage8/classifier-eval/classifier_prompt.md, copied at build time to
+// _lib/classifier-prompt.generated.txt (see scripts/build/
+// copy-classifier-prompt.mjs) so harness and Function read the one file.
 //
 // Field names "Postmark INBOUND payload": From / FromFull.Email, Subject,
 // TextBody, StrippedTextReply, MessageID, Date — verified against Postmark's
@@ -23,12 +33,14 @@ import {
   STATUS,
   TABLES,
 } from '../../_lib/airtable';
+import CLASSIFIER_SYSTEM_PROMPT from '../../_lib/classifier-prompt.generated.txt';
 
 interface Env {
   OPENSIGN_AT_BASE_ID: string;
   OPENSIGN_AT_BASE_API_KEY: string;
   POSTMARK_WEBHOOK_USER: string;
   POSTMARK_WEBHOOK_PASS: string;
+  ANTHROPIC_API_KEY: string;
 }
 
 interface PostmarkInbound {
@@ -76,6 +88,133 @@ const escapeFormulaValue = (v: string): string =>
 
 const errToString = (err: unknown): string =>
   err instanceof Error ? err.message : String(err);
+
+// ---- Classifier (raw fetch, no SDK) -------------------------------------
+//
+// Everything in this section mirrors run_eval.py's classify() exactly: same
+// model, same tool schema, same tool_choice, same user-message shape, same
+// response parsing. Production must match what the eval validated.
+
+const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
+// The validated eval baseline (run_eval.py DEFAULT_MODEL). Do not bump without
+// re-running the eval on the new model first.
+const CLASSIFIER_MODEL = 'claude-sonnet-4-6';
+
+// Ported from run_eval.py CLASSIFY_TOOL (enum order = Python sorted()).
+const CLASSIFY_TOOL = {
+  name: 'classify_request',
+  description:
+    'Classify the inbound customer email into one of five buckets and ' +
+    'report needs_split if the email contains multiple distinct requests.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      bucket: {
+        type: 'string',
+        enum: ['AUTO_HANDLE', 'CLARIFY', 'ESCALATE', 'INFORMATIONAL', 'QUOTE'],
+        description: 'The routing bucket for this email.',
+      },
+      confidence: {
+        type: 'number',
+        minimum: 0,
+        maximum: 1,
+        description: 'Subjective confidence in the bucket choice (0-1).',
+      },
+      reasoning: {
+        type: 'string',
+        description: '1-3 sentences explaining the choice, referencing specificity.',
+      },
+      needs_split: {
+        type: 'boolean',
+        description: 'True if the email contains multiple distinct requests.',
+      },
+      split_requests: {
+        type: 'array',
+        items: { type: 'string' },
+        description: 'When needs_split=true, list each distinct request.',
+      },
+    },
+    required: ['bucket', 'confidence', 'reasoning', 'needs_split'],
+  },
+} as const;
+
+// The classifier's enum strings and the Airtable singleSelect option names
+// are NOT identical — explicit mapping, no string munging.
+const BUCKET_TO_CLASSIFICATION: Record<string, string> = {
+  AUTO_HANDLE: CLASSIFICATION.autoHandle,
+  CLARIFY: CLASSIFICATION.clarify,
+  QUOTE: CLASSIFICATION.quote,
+  ESCALATE: CLASSIFICATION.escalate,
+  INFORMATIONAL: CLASSIFICATION.informational,
+};
+
+interface Classified {
+  classification: string; // Airtable option name
+  confidence: number | null;
+  reasoning: string | null;
+}
+
+// One attempt, no retry loop: unlike the offline harness (which sleeps 60s on
+// a 429), we run inside waitUntil() and fail toward escalation instead.
+async function classifyEmail(
+  env: Env,
+  subject: string,
+  body: string,
+): Promise<Classified> {
+  const payload = {
+    model: CLASSIFIER_MODEL,
+    max_tokens: 1024,
+    system: CLASSIFIER_SYSTEM_PROMPT,
+    tools: [CLASSIFY_TOOL],
+    tool_choice: { type: 'tool', name: 'classify_request' },
+    messages: [{ role: 'user', content: `Subject: ${subject}\n\n${body}` }],
+  };
+  const res = await fetch(ANTHROPIC_API_URL, {
+    method: 'POST',
+    headers: {
+      'x-api-key': env.ANTHROPIC_API_KEY,
+      'anthropic-version': '2023-06-01',
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+    // Bounded so a hung call still leaves time to write the escalation row
+    // before the runtime ends the waitUntil() lifetime.
+    signal: AbortSignal.timeout(20_000),
+  });
+  if (!res.ok) {
+    const detail = await res.text().catch(() => '');
+    throw new Error(`Anthropic API ${res.status}: ${detail}`);
+  }
+  const data = (await res.json()) as {
+    stop_reason?: string;
+    content?: Array<{ type?: string; name?: string; input?: Record<string, unknown> }>;
+  };
+  const blocks = data.content ?? [];
+  const toolUse = blocks.find(
+    (b) => b.type === 'tool_use' && b.name === 'classify_request',
+  );
+  if (!toolUse || !toolUse.input) {
+    throw new Error(
+      `No tool_use block in response. stop_reason=${data.stop_reason}`,
+    );
+  }
+  const input = toolUse.input;
+  const bucket = typeof input.bucket === 'string' ? input.bucket : '';
+  const classification = BUCKET_TO_CLASSIFICATION[bucket];
+  if (!classification) {
+    throw new Error(`Classifier returned unknown bucket: ${JSON.stringify(input.bucket)}`);
+  }
+  // Coerce at the boundary: bad values -> null, never 0/NaN.
+  const confidence =
+    typeof input.confidence === 'number' && Number.isFinite(input.confidence)
+      ? input.confidence
+      : null;
+  return {
+    classification,
+    confidence,
+    reasoning: asStringOrNull(input.reasoning),
+  };
+}
 
 // ---- Basic Auth (synchronous) -----------------------------------------
 
@@ -206,7 +345,22 @@ async function process(env: Env, m: Extracted): Promise<void> {
     const customerId = m.fromEmail ? await findCustomerByEmail(env, m.fromEmail) : null;
     const matched = customerId !== null;
 
-    // c. Create one Requests row.
+    // c. Matched senders only: classify BEFORE creating the row, so the
+    //    Request lands fully populated in one write (a crash mid-flight means
+    //    no row, and Postmark's retry re-processes from scratch). Any
+    //    classifier failure fails toward escalation — never drop the request.
+    let classified: Classified | null = null;
+    let classifierError: string | null = null;
+    if (matched) {
+      try {
+        classified = await classifyEmail(env, m.subject ?? '', m.body ?? '');
+      } catch (err) {
+        classifierError = errToString(err);
+        console.error('[postmark inbound] classifier failed, escalating', err);
+      }
+    }
+
+    // d. Create one Requests row.
     const fields: Record<string, unknown> = {
       [REQUESTS_FIELDS.subject]: m.subject,
       [REQUESTS_FIELDS.fromEmail]: m.fromEmail,
@@ -214,11 +368,21 @@ async function process(env: Env, m: Extracted): Promise<void> {
       [REQUESTS_FIELDS.postmarkMessageId]: m.messageId,
       [REQUESTS_FIELDS.receivedAt]: m.receivedAt,
     };
-    if (matched) {
-      // Matched: link the customer, status New. Leave Classification /
-      // Confidence empty — classification is the next task.
+    if (matched && classified) {
       fields[REQUESTS_FIELDS.customer] = [customerId];
-      fields[REQUESTS_FIELDS.status] = STATUS.new;
+      fields[REQUESTS_FIELDS.classification] = classified.classification;
+      fields[REQUESTS_FIELDS.confidence] = classified.confidence;
+      fields[REQUESTS_FIELDS.classifierReasoning] = classified.reasoning;
+      // Escalate classifications go straight to the Escalation Queue.
+      fields[REQUESTS_FIELDS.status] =
+        classified.classification === CLASSIFICATION.escalate
+          ? STATUS.escalated
+          : STATUS.classified;
+    } else if (matched) {
+      // Classifier errored/unparseable: keep the customer link, escalate.
+      fields[REQUESTS_FIELDS.customer] = [customerId];
+      fields[REQUESTS_FIELDS.classification] = CLASSIFICATION.escalate;
+      fields[REQUESTS_FIELDS.status] = STATUS.escalated;
     } else {
       // Unmatched senders are ALWAYS escalated and NEVER classified.
       fields[REQUESTS_FIELDS.classification] = CLASSIFICATION.escalate;
@@ -226,14 +390,33 @@ async function process(env: Env, m: Extracted): Promise<void> {
     }
     const requestId = await createRecord(env, TABLES.requests, fields);
 
-    // d. Create the linked Request Event.
+    // e. Create the linked Request Events.
     const eventType = matched ? 'matched' : 'unmatched_escalated';
     const detail = matched
       ? `Matched customer ${customerId}`
       : `no customer match for ${m.fromEmail ?? '(unknown sender)'}`;
     await createRequestEvent(env, requestId, eventType, detail, m.messageId);
+    if (matched) {
+      if (classified) {
+        await createRequestEvent(
+          env,
+          requestId,
+          'classified',
+          `${classified.classification} (confidence ${classified.confidence ?? 'n/a'})`,
+          m.messageId,
+        );
+      } else {
+        await createRequestEvent(
+          env,
+          requestId,
+          'classifier_error_escalated',
+          `Classifier error: ${classifierError ?? '(unknown)'}`,
+          m.messageId,
+        );
+      }
+    }
   } catch (err) {
-    // e. Best-effort error event so failures are visible in Airtable too.
+    // f. Best-effort error event so failures are visible in Airtable too.
     console.error('[postmark inbound] background processing failed', err);
     try {
       await createRequestEvent(

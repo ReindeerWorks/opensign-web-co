@@ -1,5 +1,7 @@
 # build output
 dist/
+# generated at build from scripts/stage8/classifier-eval/classifier_prompt.md
+functions/_lib/classifier-prompt.generated.txt
 
 # generated types
 .astro/

@@ -3,11 +3,28 @@
 Stage 8 Step 2. Postmark receives mail to our support address and POSTs an
 INBOUND webhook here. The Function authenticates (Basic Auth), fast-acknowledges
 with `200`, then in the background dedupes on Postmark MessageID, matches the
-sender to a Customer, and writes a Request (+ Request Event) to Airtable.
+sender to a Customer, classifies matched emails, and writes a Request
+(+ Request Events) to Airtable.
 
-**Scope:** intake only. It does not classify, generate, deploy, or send email.
-Unmatched senders are always written as `Escalate` / `Escalated` and never
-classified.
+**Scope:** intake + classification only. It does not execute anything — no
+change generation, no preview deploys, no outbound email; even an `Auto-handle`
+result is only recorded. Unmatched senders are always written as `Escalate` /
+`Escalated` and never classified. If the classifier errors, the request fails
+toward escalation (`Escalate` / `Escalated` + a `classifier_error_escalated`
+event) — it is never dropped.
+
+## Classifier prompt bundling
+
+The classifier's request contract (model `claude-sonnet-4-6`, tool schema,
+parsing) is ported 1:1 from the validated harness
+`scripts/stage8/classifier-eval/run_eval.py`. The system prompt is the LOCKED
+`scripts/stage8/classifier-eval/classifier_prompt.md` — the Function does not
+fork it. `npm run build` copies it to
+`functions/_lib/classifier-prompt.generated.txt` (gitignored; see
+`scripts/build/copy-classifier-prompt.mjs`), which wrangler's esbuild inlines
+into the Functions bundle as a text module. If the copy is missing, the
+Functions build fails loudly. The Cloudflare Pages build command must therefore
+be `npm run build` (not a bare `astro build`).
 
 ## Environment variables
 
@@ -15,10 +32,11 @@ classified.
 | --- | --- | --- |
 | `OPENSIGN_AT_BASE_ID` | Airtable base id (existing) | Cloudflare Pages secret |
 | `OPENSIGN_AT_BASE_API_KEY` | Airtable PAT (existing) | Cloudflare Pages secret |
-| `POSTMARK_WEBHOOK_USER` | Basic Auth username (new) | Cloudflare Pages secret |
-| `POSTMARK_WEBHOOK_PASS` | Basic Auth password (new) | Cloudflare Pages secret |
+| `POSTMARK_WEBHOOK_USER` | Basic Auth username | Cloudflare Pages secret |
+| `POSTMARK_WEBHOOK_PASS` | Basic Auth password | Cloudflare Pages secret |
+| `ANTHROPIC_API_KEY` | Classifier (new — same name as `.env` / Python scripts) | Cloudflare Pages secret |
 
-All four must be configured as **encrypted Secrets** in the Cloudflare Pages
+All five must be configured as **encrypted Secrets** in the Cloudflare Pages
 project (Settings → Environment variables) before a live test. In Postmark, set
 the inbound webhook URL with the same credentials embedded:
 `https://USER:PASS@<your-domain>/api/inbound/postmark`.
